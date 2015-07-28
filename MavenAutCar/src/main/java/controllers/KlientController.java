@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import entities.Klient;
 import entities.Kontakt;
+import dao.GenericDao;
 import dao.KlientDao;
 
 @Controller
@@ -23,10 +24,10 @@ public class KlientController {
 	@RequestMapping(value="/clients", method=RequestMethod.GET)
 	public ModelAndView clients() {
 		
-		KlientDao dao = new KlientDao();
+		GenericDao<Klient> dao = new KlientDao();
 		
 		ModelAndView mav = new ModelAndView("klienti");
-		mav.addObject("clients", dao.showClients());
+		mav.addObject("clients", dao.showAll());
 		
 		//return new ModelAndView("klienti", "command", clients);
 		return mav;
@@ -39,8 +40,8 @@ public class KlientController {
 		klient.setJmeno("bc. " + klient.getJmeno());
 		
 		Klient k = new Klient(klient.getJmeno());
-		KlientDao dao = new KlientDao();
-		dao.addKlient(k);
+		GenericDao<Klient> dao = new KlientDao();
+		dao.add(k);
 		
 		return klient;
 	}

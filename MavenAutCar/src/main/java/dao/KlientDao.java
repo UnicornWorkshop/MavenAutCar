@@ -12,7 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 import entities.Klient;
 
-public class KlientDao {
+public class KlientDao implements GenericDao<Klient> {
 	
 	private SessionFactory sf = new Configuration().configure().buildSessionFactory();
     
@@ -20,7 +20,8 @@ public class KlientDao {
         this.sf = sf;
     }
     
-    public void addKlient(Klient k) {
+    @Override
+    public void add(Klient k) {
     	Session s = sf.openSession();
 		Transaction t = s.beginTransaction();
 		s.persist(k);
@@ -30,7 +31,8 @@ public class KlientDao {
         System.out.println("Client: " + k.getJmeno());
     }
     
-    public List<Klient> showClients() {
+    @Override
+    public List<Klient> showAll() {
     	List<Klient> clients = new ArrayList<>();
     	
     	Session s = sf.openSession();
@@ -45,6 +47,21 @@ public class KlientDao {
 		t.commit();
 		s.close(); 	
 		return clients;
+    }
+    
+    @Override
+    public Klient showOne(Integer id) {
+    	return null;
+    }
+    
+    @Override
+    public void update(Integer id) {
+    	
+    }
+    
+    @Override
+    public void delete(Integer id) {
+    	
     }
 	
 }
