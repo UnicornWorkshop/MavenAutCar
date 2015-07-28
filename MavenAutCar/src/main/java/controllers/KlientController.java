@@ -14,7 +14,7 @@ import entities.Kontakt;
 public class KlientController {
 	@RequestMapping(value="/klient", method=RequestMethod.GET)
 	public ModelAndView klient() {
-		return new ModelAndView("kontakt", "command", new Kontakt());
+		return new ModelAndView("kontakt", "command", new Klient());
 	}
 	
 	@RequestMapping(value="/addKlient", method=RequestMethod.POST)
