@@ -70,7 +70,7 @@ public class KlientDao implements GenericDao<Klient> {
 	public void delete(Integer id) {
 		Session s = sf.openSession();
 		Transaction t = s.beginTransaction();
-		Query q = s.createQuery("DELETE k FROM Klient as k WHERE k.id=:id")
+		Query q = s.createQuery("DELETE Klient k WHERE k.id=:id")
 				.setParameter("id", id);
 		t.commit();
 		s.close();
