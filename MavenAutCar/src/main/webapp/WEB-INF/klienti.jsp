@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,8 +8,17 @@
 <title>klienti.jsp</title>
 </head>
 <body>
-
-${clients}
-
+<table border="1">
+<tr>
+<td width="50px">id</td>
+<td width="150px">jmeno</td>
+</tr>
+<c:forEach items="${clients}" var="client">
+  <tr>
+  <td>${client.id}</td>
+  <td>${client.jmeno}</td>
+  </tr>
+</c:forEach>
+</table>
 </body>
 </html>

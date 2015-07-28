@@ -24,9 +24,12 @@ public class KlientController {
 	public ModelAndView clients() {
 		
 		KlientDao dao = new KlientDao();
-		List<Klient> clients = dao.showClients();
 		
-		return new ModelAndView("klienti", "command", clients);
+		ModelAndView mav = new ModelAndView("klienti");
+		mav.addObject("clients", dao.showClients());
+		
+		//return new ModelAndView("klienti", "command", clients);
+		return mav;
 	}
 	
 	@RequestMapping(value="/addKlient", method=RequestMethod.POST)
