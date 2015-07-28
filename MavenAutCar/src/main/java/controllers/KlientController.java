@@ -14,6 +14,7 @@ import entities.Kontakt;
 import dao.GenericDao;
 import dao.KlientDao;
 
+@RequestMapping(value="/klient")
 @Controller
 public class KlientController {
 	@RequestMapping(value="/klient", method=RequestMethod.GET)
@@ -26,7 +27,7 @@ public class KlientController {
 		
 		GenericDao<Klient> dao = new KlientDao();
 		
-		ModelAndView mav = new ModelAndView("klienti");
+		ModelAndView mav = new ModelAndView("klient/klienti");
 		mav.addObject("clients", dao.showAll());
 		
 		//return new ModelAndView("klienti", "command", clients);
