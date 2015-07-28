@@ -17,10 +17,12 @@ public class KlientController {
 		return new ModelAndView("kontakt", "command", new Kontakt());
 	}
 	
-	@RequestMapping(value="/addKontakt", method=RequestMethod.POST)
+	@RequestMapping(value="/addKlient", method=RequestMethod.POST)
 	public @ResponseBody Klient addKlient(@RequestBody final Klient klient) {
 		System.out.println("id: " + klient.getId());
 		System.out.println("jmeno: " + klient.getJmeno());
+		klient.setJmeno("bc. " + klient.getJmeno());
+		
 		return klient;
 	}
 }
