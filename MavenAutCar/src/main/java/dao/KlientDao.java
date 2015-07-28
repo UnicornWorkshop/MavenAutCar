@@ -1,5 +1,10 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,6 +30,23 @@ public class KlientDao {
 		s.close();
 		
         System.out.println("Client: " + k.getJmeno());
+    }
+    
+    public List<Klient> showClients() {
+    	List<Klient> clients = new ArrayList<>();
+    	
+    	Session s = sf.openSession();
+		Transaction t = s.beginTransaction();
+
+		Query q = s.createQuery("SELECT k FROM Klient k");
+		Iterator<Klient> vysledek = q.iterate();
+		while(vysledek.hasNext()) {
+			clients.add(vysledek.next());
+		}				
+		
+		t.commit();
+		s.close(); 	
+		return clients;
     }
 	
 }
