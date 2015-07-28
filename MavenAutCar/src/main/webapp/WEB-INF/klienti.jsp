@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>add.jsp</title>
+<title>klienti.jsp</title>
 </head>
 <body>
-sdfsdfdfsfdf
+
+${clients}
+
 </body>
 </html>
