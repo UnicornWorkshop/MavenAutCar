@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import entities.Klient;
 import entities.Kontakt;
+import dao.KlientDao;
 
 @Controller
 public class KlientController {
@@ -22,6 +23,10 @@ public class KlientController {
 		System.out.println("id: " + klient.getId());
 		System.out.println("jmeno: " + klient.getJmeno());
 		klient.setJmeno("bc. " + klient.getJmeno());
+		
+		Klient k = new Klient(klient.getJmeno());
+		KlientDao dao = new KlientDao();
+		dao.addKlient(k);
 		
 		return klient;
 	}
