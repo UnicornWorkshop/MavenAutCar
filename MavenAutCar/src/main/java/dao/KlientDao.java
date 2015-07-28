@@ -23,8 +23,6 @@ public class KlientDao {
     public void addKlient(Klient k) {
     	Session s = sf.openSession();
 		Transaction t = s.beginTransaction();
-//		Session session = this.sf.getCurrentSession();
-//      session.persist(k);
 		s.persist(k);
 		t.commit();
 		s.close();
