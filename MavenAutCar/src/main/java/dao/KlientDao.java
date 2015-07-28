@@ -13,55 +13,67 @@ import org.hibernate.cfg.Configuration;
 import entities.Klient;
 
 public class KlientDao implements GenericDao<Klient> {
-	
-	private SessionFactory sf = new Configuration().configure().buildSessionFactory();
-    
-    public void setSessionFactory(SessionFactory sf){
-        this.sf = sf;
-    }
-    
-    @Override
-    public void add(Klient k) {
-    	Session s = sf.openSession();
+
+	private SessionFactory sf = new Configuration().configure()
+			.buildSessionFactory();
+
+	public void setSessionFactory(SessionFactory sf) {
+		this.sf = sf;
+	}
+
+	public void add(Klient k) {
+		Session s = sf.openSession();
 		Transaction t = s.beginTransaction();
 		s.persist(k);
 		t.commit();
 		s.close();
-		
-        System.out.println("Client: " + k.getJmeno());
-    }
-    
-    @Override
-    public List<Klient> showAll() {
-    	List<Klient> clients = new ArrayList<>();
-    	
-    	Session s = sf.openSession();
+
+		System.out.println("Client: " + k.getJmeno());
+	}
+
+	public List<Klient> showAll() {
+		List<Klient> clients = new ArrayList<Klient>();
+
+		Session s = sf.openSession();
 		Transaction t = s.beginTransaction();
 
 		Query q = s.createQuery("SELECT k FROM Klient k");
 		Iterator<Klient> vysledek = q.iterate();
-		while(vysledek.hasNext()) {
+		while (vysledek.hasNext()) {
 			clients.add(vysledek.next());
-		}				
-		
+		}
+
 		t.commit();
-		s.close(); 	
+		s.close();
 		return clients;
-    }
-    
-    @Override
-    public Klient showOne(Integer id) {
-    	return null;
-    }
-    
-    @Override
-    public void update(Integer id) {
-    	
-    }
-    
-    @Override
-    public void delete(Integer id) {
-    	
-    }
-	
+	}
+
+	public Klient showOne(Integer id) {
+		Klient k = new Klient();
+		Session s = sf.openSession();
+		Transaction t = s.beginTransaction();
+		k = (Klient) s.get(Klient.class, id);
+		t.commit();
+		s.close();
+		return k;
+	}
+
+	public void update(Integer id, Klient k) {
+		Session s = sf.openSession();
+		Transaction t = s.beginTransaction();
+		Klient k2 = (Klient) s.get(Klient.class, id);
+		k2.setJmeno(k.getJmeno());
+		t.commit();
+		s.close();
+	}
+
+	public void delete(Integer id) {
+		Session s = sf.openSession();
+		Transaction t = s.beginTransaction();
+		Query q = s.createQuery("DELETE k FROM Klient as k WHERE k.id=:id")
+				.setParameter("id", id);
+		t.commit();
+		s.close();
+	}
+
 }
