@@ -17,17 +17,17 @@ public class KontaktController {
 		return new ModelAndView("kontakt", "command", new Kontakt());
 	}
 	
-	@RequestMapping(value="addKontakt", method=RequestMethod.POST)
+	@RequestMapping(value="/addKontakt", method=RequestMethod.POST)
 	public String addKontakt(@ModelAttribute("SpringWeb")Kontakt kontakt, ModelMap model) {
 		return "add";
 	}
 	
-	@RequestMapping(value="deleteKontakt/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/deleteKontakt/{id}", method=RequestMethod.DELETE)
 	public String deleteKontakt(@PathVariable("id")Integer id) { 
 		return "delete";		
 	}
 	
-	@RequestMapping(value="updateKontakt/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="/updateKontakt/{id}", method=RequestMethod.PUT)
 	public String updateKontakt(@PathVariable("id")Integer id) { 
 		return "update";		
 	}
