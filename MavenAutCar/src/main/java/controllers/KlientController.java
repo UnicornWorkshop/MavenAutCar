@@ -32,7 +32,6 @@ public class KlientController implements GenericController<Klient> {
 		return mav;
 	}
 
-	@Override
 	public Klient add(@RequestBody final Klient item) {
 		dao.add(item);
 		return item;

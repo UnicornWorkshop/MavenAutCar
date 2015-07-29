@@ -12,6 +12,23 @@
 	<div id="header">
 		<h1>Office Section</h1>
 	</div>
+	
+	
+	<script>
+		function handleClick(var mesto) {
+			
+			
+		}
+	</script>
+	<div>
+		<form name="myform" onSubmit="handleClick()">
+		  <input id="mesto" name="mesto" type="text">
+	      <input name="Submit"  type="submit" value="Submit" onClick="handleClick(this.mesto)"/>
+
+    	</form>	
+	</div>
+	
+	
 
 	<div id="nav">
 		<a href="/car/all">Car</a><br> <a href="/client/all">Client</a><br>
