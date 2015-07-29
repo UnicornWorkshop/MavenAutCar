@@ -1,49 +1,39 @@
 package controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dao.AutoDao;
-import dao.GenericDao;
 import entities.Auto;
 
 @RequestMapping(value = "/car")
 @Controller
-public class AutoController implements GenericController<Auto> {
-
-	@Autowired
-	GenericDao<Auto> dao;
-	
-	public void setDao(GenericDao<Auto> dao) {
-		this.dao = dao;
-	}
+public class AutoController extends AbstractController<Auto>  implements GenericController<Auto> {
 
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("car/all");
-		mav.addObject("cars", dao.all());
+		mav.addObject("cars", getDao().all());
 		return mav;
 	}
 
 	@Override
 	public Auto add(@RequestBody Auto item) {
-		dao.add(item);
+		getDao().add(item);
 		return item;
 	}
 
 	@Override
 	public Auto update(@RequestBody Auto item,@PathVariable Integer id) {
-		dao.update(id, item);
+		getDao().update(id, item);
 		return item;
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		dao.delete(id);
+		getDao().delete(id);
 	}
 
 }
