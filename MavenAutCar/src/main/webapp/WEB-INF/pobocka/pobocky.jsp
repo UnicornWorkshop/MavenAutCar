@@ -5,20 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Klienti</title>
+<title>Pobocky</title>
 </head>
 <body>
+
 <table border="1">
 <tr>
 <td width="50px">id</td>
-<td width="150px">jmeno</td>
+<td width="150px">mesto</td>
 </tr>
-<c:forEach items="${clients}" var="client">
+<c:forEach items="${pobocky}" var="pobocka">
   <tr>
-  <td>${client.id}</td>
-  <td>${client.jmeno}</td>
+  <td>${pobocka.id}</td>
+  <td>${pobocka.mesto}</td>
   </tr>
 </c:forEach>
 </table>
+
 </body>
 </html>
