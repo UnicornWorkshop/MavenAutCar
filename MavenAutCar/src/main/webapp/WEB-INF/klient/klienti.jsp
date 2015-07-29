@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>klienti.jsp</title>
+<title>Klienti</title>
 </head>
 <body>
 <table border="1">
