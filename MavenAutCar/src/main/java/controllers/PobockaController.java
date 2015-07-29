@@ -16,7 +16,7 @@ import entities.Pobocka;
 @RequestMapping("/pobocka")
 public class PobockaController {
 		
-	@RequestMapping(value="/pobocky", method=RequestMethod.GET)
+	@RequestMapping(value="/all", method=RequestMethod.GET)
 	public ModelAndView clients() {
 		
 		GenericDao<Pobocka> dao = new PobockaDao();
@@ -27,12 +27,26 @@ public class PobockaController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/addPobocka", method=RequestMethod.POST)
+	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public @ResponseBody Pobocka addPobocka(@RequestBody final Pobocka pobocka) {
 		
 		Pobocka p = new Pobocka(pobocka.getMesto());
 		GenericDao<Pobocka> dao = new PobockaDao();
 		dao.add(p);
 		return p;
+	}
+	
+	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
+	public @ResponseBody Pobocka updatePobocka(@RequestBody final Pobocka zmeny) {
+		/*System.out.println("id: " + klient.getId());
+		System.out.println("jmeno: " + klient.getJmeno());
+		klient.setJmeno("bc. " + klient.getJmeno());
+		
+		Klient k = new Klient(klient.getJmeno());
+		GenericDao<Klient> dao = new KlientDao();
+		dao.add(k);
+		
+		return klient;*/
+		return new Pobocka(); //pak smazat
 	}
 }
