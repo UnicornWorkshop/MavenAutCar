@@ -25,18 +25,7 @@ public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
 	}
 
 	@Override
-	public Kontakt showOne(Integer id) {
-		Kontakt k = new Kontakt();
-		Session s = getSf().openSession();
-		Transaction t = s.beginTransaction();
-		k = (Kontakt) s.get(Kontakt.class, id);
-		t.commit();
-		s.close();
-		return k;
-	}
-
-	@Override
-	public List<Kontakt> showAll() {
+	public List<Kontakt> all() {
 		List<Kontakt> contacts = new ArrayList<Kontakt>();
 
 		Session s = getSf().openSession();

@@ -19,7 +19,7 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		s.close();
 	}
 
-	public List<Klient> showAll() {
+	public List<Klient> all() {
 		List<Klient> clients = new ArrayList<Klient>();
 
 		Session s = getSf().openSession();

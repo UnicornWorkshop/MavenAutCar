@@ -1,55 +1,45 @@
 package controllers;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import entities.Klient;
 import dao.GenericDao;
 import dao.KlientDao;
 
-@RequestMapping(value="/klient")
+@RequestMapping(value = "/klient")
 @Controller
 public class KlientController implements GenericController<Klient> {
-	
 
+	@Override
 	public ModelAndView all() {
 		GenericDao<Klient> dao = new KlientDao();
 		ModelAndView mav = new ModelAndView("klient/all");
-		mav.addObject("clients", dao.showAll());
+		mav.addObject("clients", dao.all());
 		return mav;
 	}
-	
 
-	public  Klient add( final Klient klient) {
-		System.out.println("id: " + klient.getId());
-		System.out.println("jmeno: " + klient.getJmeno());
-		klient.setJmeno("bc. " + klient.getJmeno());
-		Klient k = new Klient(klient.getJmeno());
+	@Override
+	public Klient add(@RequestBody final Klient item) {
 		GenericDao<Klient> dao = new KlientDao();
-		dao.add(k);
-		return klient;
+		dao.add(item);
+		return item;
 	}
 
-	public Klient update( Klient klient, Integer id) {
-		KlientDao dao = new KlientDao();
-		dao.update(id, klient);
-		return klient;
-	}
-	
-
-	public void delete( Integer id) {
-		System.out.println(id);
+	@Override
+	public Klient update(@RequestBody Klient item,@PathVariable Integer id) {
 		GenericDao<Klient> dao = new KlientDao();
-		dao.delete(id);		
+		dao.update(id, item);
+		return item;
 	}
-	
-	
+
+	@Override
+	public void delete(@PathVariable Integer id) {
+		GenericDao<Klient> dao = new KlientDao();
+		dao.delete(id);
+	}
+
 }

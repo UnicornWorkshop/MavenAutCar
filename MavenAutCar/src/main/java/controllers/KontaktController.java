@@ -1,34 +1,44 @@
 package controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.GenericDao;
+import dao.KontaktDao;
 import entities.Kontakt;
 
 @Controller
-public class KontaktController {
-	@RequestMapping(value="/kontakt", method=RequestMethod.GET)
-	public ModelAndView kontakt() {
-		return new ModelAndView("kontakt", "command", new Kontakt());
+public class KontaktController implements GenericController<Kontakt> {
+
+	@Override
+	public ModelAndView all() {
+		GenericDao<Kontakt> dao = new KontaktDao();
+		ModelAndView mav = new ModelAndView("contacts/all");
+		mav.addObject("contacts", dao.all());
+		return mav;
 	}
-	
-	@RequestMapping(value="/addKontakt", method=RequestMethod.POST)
-	public String addKontakt(@ModelAttribute("SpringWeb")Kontakt kontakt, ModelMap model) {
-		return "add";
+
+	@Override
+	public Kontakt add(@RequestBody Kontakt item) {
+		GenericDao<Kontakt> dao = new KontaktDao();
+		dao.add(item);
+		return item;
 	}
-	
-	@RequestMapping(value="/deleteKontakt/{id}", method=RequestMethod.DELETE)
-	public String deleteKontakt(@PathVariable("id")Integer id) { 
-		return "delete";		
+
+	@Override
+	public Kontakt update(@RequestBody Kontakt item, @PathVariable Integer id) {
+		GenericDao<Kontakt> dao = new KontaktDao();
+		dao.update(id, item);
+		return item;
 	}
-	
-	@RequestMapping(value="/updateKontakt/{id}", method=RequestMethod.PUT)
-	public String updateKontakt(@PathVariable("id")Integer id) { 
-		return "update";		
+
+	@Override
+	public void delete(@PathVariable Integer id) {
+		GenericDao<Kontakt> dao = new KontaktDao();
+		dao.delete(id);
 	}
+
+
 }

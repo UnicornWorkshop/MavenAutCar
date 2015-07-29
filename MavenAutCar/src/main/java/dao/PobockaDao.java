@@ -22,7 +22,7 @@ public class PobockaDao extends AbstractDao implements GenericDao<Pobocka> {
 		System.out.println("Pobocka: " + p.getMesto());
 	}
 
-	public List<Pobocka> showAll() {
+	public List<Pobocka> all() {
 		List<Pobocka> pobocky = new ArrayList<>();
 
 		Session s = getSf().openSession();

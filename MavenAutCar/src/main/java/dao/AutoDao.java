@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import entities.Auto;
-import entities.Klient;
 
 public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 
@@ -23,18 +22,7 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 	}
 
 	@Override
-	public Auto showOne(Integer id) {
-		Auto a = new Auto();
-		Session s = getSf().openSession();
-		Transaction t = s.beginTransaction();
-		a = (Auto) s.get(Auto.class, id);
-		t.commit();
-		s.close();
-		return a;
-	}
-
-	@Override
-	public List<Auto> showAll() {
+	public List<Auto> all() {
 		List<Auto> cars = new ArrayList<Auto>();
 
 		Session s = getSf().openSession();
