@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,8 @@ public class KlientController implements GenericController<Klient> {
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("client/all");
 		mav.addObject("clients", dao.all());
+		ModelMap mm = new ModelMap();
+		mm.addAttribute("clients", dao.all());
 		return mav;
 	}
 

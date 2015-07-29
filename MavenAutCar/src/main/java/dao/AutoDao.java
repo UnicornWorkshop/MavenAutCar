@@ -14,7 +14,6 @@ import entities.Auto;
 @Component
 public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 
-	@Override
 	public void add(Auto item) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
@@ -23,7 +22,6 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		s.close();
 	}
 
-	@Override
 	public List<Auto> all() {
 		List<Auto> cars = new ArrayList<Auto>();
 
@@ -41,7 +39,6 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		return cars;
 	}
 
-	@Override
 	public Auto update(Integer id, Auto data) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
@@ -57,7 +54,6 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		return temp;
 	}
 
-	@Override
 	public void delete(Integer id) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();

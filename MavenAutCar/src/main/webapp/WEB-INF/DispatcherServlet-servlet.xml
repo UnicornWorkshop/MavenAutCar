@@ -5,7 +5,20 @@
 
 	<mvc:annotation-driven />
 
-	<context:component-scan base-package="controllers,dao" />
+
+
+	<!-- Tiles conf -->
+
+	<bean class="controllers.KlientController" />
+
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+
+	<!-- Register the bean -->
+
+	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="basename" value="spring-views" />
+	</bean>
+	<!-- end -->
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -49,5 +62,4 @@
 			</props>
 		</property>
 	</bean>
-
 </beans>
