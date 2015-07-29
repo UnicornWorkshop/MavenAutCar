@@ -2,9 +2,6 @@ package dao;
 
 import java.util.List;
 
-import entities.Auto;
-import entities.Klient;
-
 public interface GenericDao<T> {
 	
 	public void add(T item);
