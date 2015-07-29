@@ -10,14 +10,14 @@ import entities.Klient;
 import dao.GenericDao;
 import dao.KlientDao;
 
-@RequestMapping(value = "/klient")
+@RequestMapping(value = "/client")
 @Controller
 public class KlientController implements GenericController<Klient> {
 
 	@Override
 	public ModelAndView all() {
 		GenericDao<Klient> dao = new KlientDao();
-		ModelAndView mav = new ModelAndView("klient/all");
+		ModelAndView mav = new ModelAndView("client/all");
 		mav.addObject("clients", dao.all());
 		return mav;
 	}

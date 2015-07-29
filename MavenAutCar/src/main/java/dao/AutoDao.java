@@ -59,8 +59,8 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 	public void delete(Integer id) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
-		Query q = s.createQuery("DELETE Auto a WHERE a.id=:id")
-				.setParameter("id", id);
+		Query q = s.createQuery("DELETE Auto a WHERE a.id=:id").setParameter(
+				"id", id);
 		q.executeUpdate();
 		t.commit();
 		s.close();

@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public abstract class AbstractDao {
-	
+
 	private SessionFactory sf = new Configuration().configure()
 			.buildSessionFactory();
 
@@ -15,5 +15,5 @@ public abstract class AbstractDao {
 	public SessionFactory getSf() {
 		return sf;
 	}
-		
+
 }

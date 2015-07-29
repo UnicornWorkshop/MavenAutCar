@@ -1,11 +1,15 @@
 package controllers;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.GenericDao;
 import dao.PobockaDao;
 import entities.Pobocka;
 
+@RequestMapping(value = "/office")
+@Controller
 public class PobockaController implements GenericController<Pobocka> {
 
 	@Override
@@ -35,5 +39,5 @@ public class PobockaController implements GenericController<Pobocka> {
 		GenericDao<Pobocka> dao = new PobockaDao();
 		dao.delete(id);
 	}
-		
+
 }

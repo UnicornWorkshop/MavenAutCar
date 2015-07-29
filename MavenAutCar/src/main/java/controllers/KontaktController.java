@@ -3,12 +3,14 @@ package controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.GenericDao;
 import dao.KontaktDao;
 import entities.Kontakt;
 
+@RequestMapping(value = "/contact")
 @Controller
 public class KontaktController implements GenericController<Kontakt> {
 
