@@ -6,41 +6,29 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
 import entities.Klient;
 
-public class KlientDao implements GenericDao<Klient> {
+public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 
-	private SessionFactory sf = new Configuration().configure()
-			.buildSessionFactory();
-
-	public void setSessionFactory(SessionFactory sf) {
-		this.sf = sf;
-	}
-
-	public void add(Klient k) {
-		Session s = sf.openSession();
+	public void add(Klient item) {
+		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
-		s.persist(k);
+		s.persist(item);
 		t.commit();
 		s.close();
-
-		System.out.println("Client: " + k.getJmeno());
 	}
 
 	public List<Klient> showAll() {
 		List<Klient> clients = new ArrayList<Klient>();
 
-		Session s = sf.openSession();
+		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 
 		Query q = s.createQuery("SELECT k FROM Klient k");
-		Iterator<Klient> vysledek = q.iterate();
-		while (vysledek.hasNext()) {
-			clients.add(vysledek.next());
+		Iterator<Klient> result = q.iterate();
+		while (result.hasNext()) {
+			clients.add(result.next());
 		}
 
 		t.commit();
@@ -50,7 +38,7 @@ public class KlientDao implements GenericDao<Klient> {
 
 	public Klient showOne(Integer id) {
 		Klient k = new Klient();
-		Session s = sf.openSession();
+		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 		k = (Klient) s.get(Klient.class, id);
 		t.commit();
@@ -58,17 +46,17 @@ public class KlientDao implements GenericDao<Klient> {
 		return k;
 	}
 
-	public void update(Integer id, Klient k) {
-		Session s = sf.openSession();
+	public void update(Integer id, Klient data) {
+		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
-		Klient k2 = (Klient) s.get(Klient.class, id);
-		k2.setJmeno(k.getJmeno());
+		Klient temp = (Klient) s.get(Klient.class, id);
+		temp.setJmeno(data.getJmeno());
 		t.commit();
 		s.close();
 	}
 
 	public void delete(Integer id) {
-		Session s = sf.openSession();
+		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 		Query q = s.createQuery("DELETE Klient k WHERE k.id=:id")
 				.setParameter("id", id);
