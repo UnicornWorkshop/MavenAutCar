@@ -14,13 +14,17 @@
 }
 #nav {
     line-height:30px;
+    margin-left: 25%;
     background-color:#eeeeee;
-    height:300px;
+    height:100%;
+    padding-bottom:100%;
     width:100px;
     float:left;
     padding:5px;
 }
 #section {
+	position: auto;
+	
     width:350px;
     float:left;
     padding:10px;
@@ -49,7 +53,7 @@
 	<div id="section">
 		<h1>All Clients</h1>
 		<p>
-		<table border="1">
+		<table border="1" width="100%">
 			<tr>
 				<td width="50px">id</td>
 				<td width="150px">name</td>
