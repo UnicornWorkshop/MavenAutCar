@@ -9,10 +9,12 @@ import javax.persistence.EnumType;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import entities.Auto;
 import entities.Kontakt;
 
+@Component
 public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
 
 	@Override

@@ -7,10 +7,12 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import entities.Rezervace;
 import entities.Vybava;
 
+@Component
 public class VybavaDao extends AbstractDao implements GenericDao<Vybava> {
 
 	@Override

@@ -7,9 +7,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import entities.Pobocka;
 
+@Component
 public class PobockaDao extends AbstractDao implements GenericDao<Pobocka> {
 	
 	public void add(Pobocka p) {
