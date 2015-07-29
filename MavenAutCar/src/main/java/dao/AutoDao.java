@@ -7,9 +7,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import entities.Auto;
 
+@Component
 public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 
 	@Override

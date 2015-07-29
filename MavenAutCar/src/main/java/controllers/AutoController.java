@@ -1,5 +1,6 @@
 package controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,13 @@ import entities.Auto;
 @Controller
 public class AutoController implements GenericController<Auto> {
 
+	@Autowired
+	GenericDao<Auto> dao;
+	
+	public void setDao(GenericDao<Auto> dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public ModelAndView all() {
 		GenericDao<Auto> dao = new AutoDao();
@@ -24,21 +32,18 @@ public class AutoController implements GenericController<Auto> {
 
 	@Override
 	public Auto add(@RequestBody Auto item) {
-		GenericDao<Auto> dao = new AutoDao();
 		dao.add(item);
 		return item;
 	}
 
 	@Override
 	public Auto update(@RequestBody Auto item,@PathVariable Integer id) {
-		GenericDao<Auto> dao = new AutoDao();
 		dao.update(id, item);
 		return item;
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		GenericDao<Auto> dao = new AutoDao();
 		dao.delete(id);
 	}
 
