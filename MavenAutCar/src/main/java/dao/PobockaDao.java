@@ -48,13 +48,14 @@ public class PobockaDao extends AbstractDao implements GenericDao<Pobocka> {
 		return p;
 	}
 
-	public void update(Integer id, Pobocka zmeny) {
+	public Pobocka update(Integer id, Pobocka data) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
-		Pobocka puvodni = (Pobocka) s.get(Pobocka.class, id);
-		puvodni.setMesto(zmeny.getMesto());
+		Pobocka temp = (Pobocka) s.get(Pobocka.class, id);
+		temp.setMesto(data.getMesto());
 		t.commit();
 		s.close();
+		return temp;
 	}
 
 	public void delete(Integer id) {

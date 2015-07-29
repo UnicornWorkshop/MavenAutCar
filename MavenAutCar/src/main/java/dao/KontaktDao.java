@@ -54,7 +54,7 @@ public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
 	}
 
 	@Override
-	public void update(Integer id, Kontakt data) {
+	public Kontakt update(Integer id, Kontakt data) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 		Kontakt temp = (Kontakt) s.get(Kontakt.class, id);
@@ -62,7 +62,8 @@ public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
 		temp.setTyp((data.getTypEnum()));
 		temp.setData(data.getData());
 		t.commit();
-		s.close();		
+		s.close();
+		return temp;
 	}
 
 	@Override

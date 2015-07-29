@@ -52,7 +52,7 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 	}
 
 	@Override
-	public void update(Integer id, Auto data) {
+	public Auto update(Integer id, Auto data) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 		Auto temp = (Auto) s.get(Auto.class, id);
@@ -64,6 +64,7 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		temp.setZnacka(data.getZnacka());
 		t.commit();
 		s.close();
+		return temp;
 	}
 
 	@Override

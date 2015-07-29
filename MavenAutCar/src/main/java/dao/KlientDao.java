@@ -46,13 +46,14 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		return k;
 	}
 
-	public void update(Integer id, Klient data) {
+	public Klient update(Integer id, Klient data) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 		Klient temp = (Klient) s.get(Klient.class, id);
 		temp.setJmeno(data.getJmeno());
 		t.commit();
 		s.close();
+		return temp;
 	}
 
 	public void delete(Integer id) {
