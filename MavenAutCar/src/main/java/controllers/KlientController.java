@@ -49,6 +49,7 @@ public class KlientController {
 	}
 	
 	@RequestMapping(value="/deleteKlient/{id}", method=RequestMethod.DELETE)
+	@ResponseBody
 	public void delete(@PathVariable Integer id) {
 		System.out.println(id);
 		GenericDao<Klient> dao = new KlientDao();

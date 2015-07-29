@@ -72,6 +72,7 @@ public class KlientDao implements GenericDao<Klient> {
 		Transaction t = s.beginTransaction();
 		Query q = s.createQuery("DELETE Klient k WHERE k.id=:id")
 				.setParameter("id", id);
+		q.executeUpdate();
 		t.commit();
 		s.close();
 	}
