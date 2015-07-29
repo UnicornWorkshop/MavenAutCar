@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import entities.Klient;
-import entities.Kontakt;
 import dao.GenericDao;
 import dao.KlientDao;
 
 @RequestMapping(value="/klient")
 @Controller
-public class KlientController {
+public class KlientController implements GenericController<Klient> {
 	
-	@RequestMapping(value="/all", method=RequestMethod.GET)
+
 	public ModelAndView all() {
 		GenericDao<Klient> dao = new KlientDao();
 		ModelAndView mav = new ModelAndView("klient/all");
@@ -28,8 +27,8 @@ public class KlientController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public @ResponseBody Klient add(@RequestBody final Klient klient) {
+
+	public  Klient add( final Klient klient) {
 		System.out.println("id: " + klient.getId());
 		System.out.println("jmeno: " + klient.getJmeno());
 		klient.setJmeno("bc. " + klient.getJmeno());
@@ -38,18 +37,15 @@ public class KlientController {
 		dao.add(k);
 		return klient;
 	}
-	
-	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
-	@ResponseBody
-	public Klient update(@RequestBody Klient klient, @PathVariable Integer id) {
+
+	public Klient update( Klient klient, Integer id) {
 		KlientDao dao = new KlientDao();
 		dao.update(id, klient);
 		return klient;
 	}
 	
-	@RequestMapping(value="/delete/{id}", method=RequestMethod.DELETE)
-	@ResponseBody
-	public void delete(@PathVariable Integer id) {
+
+	public void delete( Integer id) {
 		System.out.println(id);
 		GenericDao<Klient> dao = new KlientDao();
 		dao.delete(id);		
