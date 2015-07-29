@@ -8,8 +8,12 @@ public abstract class AbstractDao {
 	private SessionFactory sf = new Configuration().configure()
 			.buildSessionFactory();
 
-	public void setSessionFactory(SessionFactory sf) {
+	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
-	
+
+	public SessionFactory getSf() {
+		return sf;
+	}
+		
 }
