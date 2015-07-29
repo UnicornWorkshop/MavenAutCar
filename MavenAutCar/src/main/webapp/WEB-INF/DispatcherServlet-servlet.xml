@@ -50,23 +50,4 @@
 		</property>
 	</bean>
 
-	<!-- bean id="AutoDAO" class="dao.AutoDao">
-		
-	</bean>
-	<bean id="KlientDAO" class="dao.KlientDao">
-		
-	</bean>
-	<bean id="KontaktDAO" class="dao.KontaktDao">
-		
-	</bean>
-	<bean id="PobockaDAO" class="dao.PobockaDao">
-		
-	</bean>
-	<bean id="RezervaceDAO" class="dao.RezervaceDao">
-		
-	</bean>
-	<bean id="VybavaDAO" class="dao.VybavaDao">
-		
-	</bean-->
-
 </beans>
