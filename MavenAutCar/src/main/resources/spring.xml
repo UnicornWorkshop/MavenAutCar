@@ -64,6 +64,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springf
 		<property name="sf" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 	
-	<mvc:resources mapping="/resources/**" location="/resources/theme1/"  
+	<mvc:resources mapping="/resources/**" location="/resources/"  
 	cache-period="31556926"/>
 </beans>
