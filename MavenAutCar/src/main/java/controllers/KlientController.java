@@ -1,5 +1,9 @@
 package controllers;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +18,15 @@ import dao.KlientDao;
 @Controller
 public class KlientController implements GenericController<Klient> {
 
+	@Autowired
+	GenericDao<Klient> dao;
+		
+	public void setDao(GenericDao<Klient> dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public ModelAndView all() {
-		GenericDao<Klient> dao = new KlientDao();
 		ModelAndView mav = new ModelAndView("client/all");
 		mav.addObject("clients", dao.all());
 		return mav;
@@ -24,21 +34,18 @@ public class KlientController implements GenericController<Klient> {
 
 	@Override
 	public Klient add(@RequestBody final Klient item) {
-		GenericDao<Klient> dao = new KlientDao();
 		dao.add(item);
 		return item;
 	}
 
 	@Override
 	public Klient update(@RequestBody Klient item,@PathVariable Integer id) {
-		GenericDao<Klient> dao = new KlientDao();
 		dao.update(id, item);
 		return item;
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		GenericDao<Klient> dao = new KlientDao();
 		dao.delete(id);
 	}
 
