@@ -24,8 +24,7 @@ public class AutoController implements GenericController<Auto> {
 
 	@Override
 	public ModelAndView all() {
-		GenericDao<Auto> dao = new AutoDao();
-		ModelAndView mav = new ModelAndView("auto/all");
+		ModelAndView mav = new ModelAndView("car/all");
 		mav.addObject("cars", dao.all());
 		return mav;
 	}
