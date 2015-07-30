@@ -47,12 +47,26 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 		createSession();
 		Transaction t = getSession().beginTransaction();
 		Query q = getSession().createQuery("DELETE Auto a WHERE a.id=:id").setParameter(
 				"id", id);
 		q.executeUpdate();
+		t.commit();
+		closeSession();		
+	}
+
+	@Override
+	public void update(Integer id, Auto item) {
+		createSession();
+		Transaction t = getSession().beginTransaction();
+		Auto temp = (Auto) getSession().get(Auto.class, id);
+		temp.setKapacita(item.getKapacita());
+		temp.setPobocka(item.getPobocka());
+		temp.setVelikost(item.getVelikost());
+		temp.setVybava(item.getVybava());
+		temp.setVykonnost(item.getVykonnost());
+		temp.setZnacka(item.getZnacka());
 		t.commit();
 		closeSession();		
 	}
