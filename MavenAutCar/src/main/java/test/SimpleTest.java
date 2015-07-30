@@ -1,6 +1,8 @@
 package test;
 
 import entities.*;
+import services.KlientDao;
+
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,8 +17,6 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
-
-import dao.KlientDao;
 
 public class SimpleTest {
 

@@ -1,4 +1,4 @@
-package dao;
+package services;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import entities.Pobocka;
 
 @Component
-public class PobockaDao extends AbstractDao implements GenericDao<Pobocka> {
+public class PobockaDao extends AbstractService implements GenericDao<Pobocka> {
 	
 	public void add(Pobocka p) {
 		Session s = getSf().openSession();

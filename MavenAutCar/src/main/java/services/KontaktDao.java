@@ -1,4 +1,4 @@
-package dao;
+package services;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,7 +15,7 @@ import entities.Auto;
 import entities.Kontakt;
 
 @Component
-public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
+public class KontaktDao extends AbstractService implements GenericDao<Kontakt> {
 
 	@Override
 	public void add(Kontakt item) {

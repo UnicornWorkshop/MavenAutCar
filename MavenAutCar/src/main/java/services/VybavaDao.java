@@ -1,4 +1,4 @@
-package dao;
+package services;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import entities.Rezervace;
 import entities.Vybava;
 
 @Component
-public class VybavaDao extends AbstractDao implements GenericDao<Vybava> {
+public class VybavaDao extends AbstractService implements GenericDao<Vybava> {
 
 	@Override
 	public void add(Vybava item) {

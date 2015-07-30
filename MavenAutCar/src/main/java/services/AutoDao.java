@@ -1,4 +1,4 @@
-package dao;
+package services;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import entities.Auto;
 
 @Component
-public class AutoDao extends AbstractDao implements GenericDao<Auto> {
+public class AutoDao extends AbstractService implements GenericDao<Auto> {
 
 	@Override
 	public void add(Auto item) {

@@ -1,4 +1,4 @@
-package dao;
+package services;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import entities.Klient;
 
 @Component
-public class KlientDao extends AbstractDao implements GenericDao<Klient> {
+public class KlientDao extends AbstractService implements GenericDao<Klient> {
 
 	public void add(Klient item) {
 		Session s = getSf().openSession();

@@ -1,4 +1,4 @@
-package dao;
+package services;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import entities.Pobocka;
 import entities.Rezervace;
 
 @Component
-public class RezervaceDao extends AbstractDao implements GenericDao<Rezervace> {
+public class RezervaceDao extends AbstractService implements GenericDao<Rezervace> {
 
 	@Override
 	public void add(Rezervace item) {

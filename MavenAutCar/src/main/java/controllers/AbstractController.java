@@ -2,7 +2,7 @@ package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import dao.GenericDao;
+import services.GenericDao;
 
 public abstract class AbstractController<T>{
 	
