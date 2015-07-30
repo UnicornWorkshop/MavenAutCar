@@ -33,7 +33,7 @@
 			<c:forEach items="${contacts}" var="contact">
 				<tr>
 					<td>${contact.id}</td>
-					<td>${contact.klient}</td>
+					<td>${contact.klient.jmeno}(id: ${contact.klient.id})</td>
 					<td>${contact.typ}</td>
 					<td>${contact.data}</td>
 				</tr>

@@ -36,7 +36,7 @@
 			<tr>
 				<td>${car.id}</td>
 				<td>${car.kapacita}</td>
-				<td>${car.pobocka}</td>
+				<td>${car.pobocka.mesto}(id: ${car.pobocka.id})</td>
 				<td>${car.velikost}</td>
 				<td>${car.vybava}</td>
 				<td>${car.vykonnost}</td>
