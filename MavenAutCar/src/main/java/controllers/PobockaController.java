@@ -27,8 +27,7 @@ public class PobockaController extends AbstractController<Pobocka> implements Ge
 
 	@Override
 	public Pobocka update(@RequestBody Pobocka item, @PathVariable Integer id) {
-		getService().delete(id);
-		return item;
+		return getService().update(id, item);
 	}
 
 	@Override

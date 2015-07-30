@@ -20,11 +20,8 @@ public class PobockaService extends AbstractService<Pobocka> implements GenericS
 	}
 
 	@Override
-	public Pobocka update(Integer id, Pobocka data) {
-		Pobocka item = new Pobocka();
-		item = (Pobocka) getDao().get(id);
-		item.setMesto(data.getMesto());
-		return item;
+	public Pobocka update(Integer id, Pobocka item) {
+		return getDao().update(id, item);
 	}
 
 	@Override

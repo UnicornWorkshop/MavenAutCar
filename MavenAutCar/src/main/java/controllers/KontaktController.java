@@ -27,8 +27,7 @@ public class KontaktController extends AbstractController<Kontakt> implements Ge
 
 	@Override
 	public Kontakt update(@RequestBody Kontakt item, @PathVariable Integer id) {
-		getService().update(id, item);
-		return item;
+		return getService().update(id, item);
 	}
 
 	@Override

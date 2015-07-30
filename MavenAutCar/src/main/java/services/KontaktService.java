@@ -29,13 +29,13 @@ public class KontaktService extends AbstractService<Kontakt> implements GenericS
 	}
 
 	@Override
-	public Kontakt update(Integer id, Kontakt data) {
-		Kontakt item = new Kontakt();
+	public Kontakt update(Integer id, Kontakt item) {
+		/*Kontakt item = new Kontakt();
 		item = (Kontakt) getDao().get(id);
 		item.setKlient(data.getKlient());
 		item.setTyp(data.getTypEnum());
-		item.setData(data.getData());
-		return item;	
+		item.setData(data.getData());*/
+		return getDao().update(id, item);	
 	}
 
 	@Override
