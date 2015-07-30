@@ -1,15 +1,16 @@
 package services;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class AbstractService {
+import dao.GenericDao;
+
+public abstract class AbstractService<T> {
 
 	@Autowired
-	private SessionFactory sf;
+	private GenericDao<T> dao;
 
-	public SessionFactory getSf() {
-		return sf;
+	public GenericDao<T> getDao() {
+		return dao;
 	}
 
 }
