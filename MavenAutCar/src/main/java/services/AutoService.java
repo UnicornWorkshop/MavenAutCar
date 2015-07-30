@@ -12,9 +12,12 @@ import org.springframework.stereotype.Component;
 import entities.Auto;
 
 @Component
-public class AutoService extends AbstractService implements GenericService<Auto> {
+public class AutoService extends AbstractService<Auto> implements GenericService<Auto> {
 
-	@Override
+	public void add(Auto item) {
+		getDao().insert(item);
+	}
+	/*@Override
 	public void add(Auto item) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
@@ -66,5 +69,23 @@ public class AutoService extends AbstractService implements GenericService<Auto>
 		q.executeUpdate();
 		t.commit();
 		s.close();
+	}*/
+
+	@Override
+	public List<Auto> all() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Auto update(Integer id, Auto data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		
 	}
 }
