@@ -1,26 +1,61 @@
 package dao;
 
-import javax.transaction.Transaction;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import entities.Auto;
 
-public class AutoDao extends AbstractDao {
-	
-	public Auto getAuto(Integer id) {
+@Component
+public class AutoDao extends AbstractDao implements GenericDao<Auto> {
+
+	@Override
+	public Auto get(Integer id) {
 		return (Auto) getSession().get(Auto.class, id);
 	}
-	
-	public void insertAuto(Auto auto) {
-		getSession().persist(auto);
+
+	@Override
+	public void insert(Auto item) {
+		getSession().persist(item);		
+	}
+
+	@Override
+	public List<Auto> getAll() {
+		List<Auto> cars = new ArrayList<Auto>();
+		createSession();
+		
+		
+		
+		/*
+		List<Auto> cars = new ArrayList<Auto>();
+createSession();
+		Session s = getSf().openSession();
+		Transaction t = s.beginTransaction();
+
+		Query q = s.createQuery("SELECT a FROM Auto a");
+		Iterator<Auto> result = q.iterate();
+		while (result.hasNext()) {
+			cars.add(result.next());
+		}
+
+		t.commit();
+		s.close();
+		return cars;*/
+		
+		return null;
+		
+		
+	}
+
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
-
 /*
-
 @Override
 	public void add(Auto item) {
 		Session s = getSf().openSession();
@@ -74,7 +109,4 @@ public class AutoDao extends AbstractDao {
 		t.commit();
 		s.close();
 	}
-
-
-
 */
