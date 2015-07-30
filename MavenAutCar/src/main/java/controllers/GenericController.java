@@ -12,7 +12,7 @@ public interface GenericController<T> {
 	public ModelAndView all();
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public @ResponseBody T add(@RequestBody T item);
-	@RequestMapping(value="/update", method=RequestMethod.PUT)
+	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
 	public @ResponseBody T update(@RequestBody T item, @PathVariable Integer id);
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable Integer id);
