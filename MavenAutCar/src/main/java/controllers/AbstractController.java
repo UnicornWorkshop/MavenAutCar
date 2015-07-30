@@ -1,16 +1,16 @@
 package controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 
-import services.GenericService;
+//import services.GenericService;
 
 public abstract class AbstractController<T>{
 	
-	@Autowired
+	/*@Autowired
 	private GenericService<T> dao;
 
 	public GenericService<T> getDao() {
 		return dao;
-	}
+	}*/
 
 }
