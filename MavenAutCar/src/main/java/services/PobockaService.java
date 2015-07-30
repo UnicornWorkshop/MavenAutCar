@@ -13,61 +13,27 @@ import entities.Pobocka;
 
 @Component
 public class PobockaService extends AbstractService implements GenericService<Pobocka> {
-	
-	public void add(Pobocka p) {
-		Session s = getSf().openSession();
-		Transaction t = s.beginTransaction();
-		s.persist(p);
-		t.commit();
-		s.close();
 
-		System.out.println("Pobocka: " + p.getMesto());
+	@Override
+	public void add(Pobocka item) {
+		getDao().insert(item);
 	}
 
+	@Override
 	public List<Pobocka> all() {
-		List<Pobocka> pobocky = new ArrayList<>();
-
-		Session s = getSf().openSession();
-		Transaction t = s.beginTransaction();
-
-		Query q = s.createQuery("SELECT p FROM Pobocka p");
-		Iterator<Pobocka> vysledek = q.iterate();
-		while (vysledek.hasNext()) {
-			pobocky.add(vysledek.next());
-		}
-
-		t.commit();
-		s.close();
-		return pobocky;
+		return getDao().getAll();
 	}
 
-	public Pobocka showOne(Integer id) {
-		Session s = getSf().openSession();
-		Transaction t = s.beginTransaction();
-		Pobocka p = (Pobocka) s.get(Pobocka.class, id);
-		t.commit();
-		s.close();
-		return p;
-	}
-
+	@Override
 	public Pobocka update(Integer id, Pobocka data) {
-		Session s = getSf().openSession();
-		Transaction t = s.beginTransaction();
-		Pobocka temp = (Pobocka) s.get(Pobocka.class, id);
-		temp.setMesto(data.getMesto());
-		t.commit();
-		s.close();
-		return temp;
+		Pobocka item = new Pobocka();
+		item = (Pobocka) getDao().get(id);
+		item.setMesto(data.getMesto());
+		return item;
 	}
 
+	@Override
 	public void delete(Integer id) {
-		Session s = getSf().openSession();
-		Transaction t = s.beginTransaction();
-		Query q = s.createQuery("DELETE Pobocka p WHERE p.id=:id")
-				.setParameter("id", id);
-		q.executeUpdate();
-		t.commit();
-		s.close();
+		getDao().delete(id);
 	}
-
 }
