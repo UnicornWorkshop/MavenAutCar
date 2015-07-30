@@ -1,25 +1,13 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.EnumType;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import entities.Auto;
-import entities.Klient;
-import entities.Kontakt;
 import entities.Kontakt;
 
 @Component
-public class KontaktService extends AbstractService implements GenericService<Kontakt> {
+public class KontaktService extends AbstractService<Kontakt> implements GenericService<Kontakt> {
 
 	@Override
 	public void add(Kontakt item) {

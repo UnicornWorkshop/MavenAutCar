@@ -1,18 +1,13 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import entities.Pobocka;
 
 @Component
-public class PobockaService extends AbstractService implements GenericService<Pobocka> {
+public class PobockaService extends AbstractService<Pobocka> implements GenericService<Pobocka> {
 
 	@Override
 	public void add(Pobocka item) {
