@@ -1,7 +1,7 @@
 package test;
 
 import entities.*;
-import services.KlientDao;
+import services.KlientService;
 
 import java.util.Set;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class SimpleTest {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		
-		KlientDao dao = (KlientDao) context.getBean("KlientDAO", KlientDao.class);
+		KlientService dao = (KlientService) context.getBean("KlientDAO", KlientService.class);
 		dao.add(new Klient("Pepa"));
 	}
 }

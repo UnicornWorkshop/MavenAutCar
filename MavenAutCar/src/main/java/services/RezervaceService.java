@@ -13,7 +13,7 @@ import entities.Pobocka;
 import entities.Rezervace;
 
 @Component
-public class RezervaceDao extends AbstractService implements GenericDao<Rezervace> {
+public class RezervaceService extends AbstractService implements GenericService<Rezervace> {
 
 	@Override
 	public void add(Rezervace item) {

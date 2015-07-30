@@ -4,21 +4,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.EnumType;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import entities.Auto;
-import entities.Kontakt;
 
 @Component
-public class KontaktDao extends AbstractService implements GenericDao<Kontakt> {
+public class AutoService extends AbstractService implements GenericService<Auto> {
 
 	@Override
-	public void add(Kontakt item) {
+	public void add(Auto item) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 		s.persist(item);
@@ -27,31 +24,34 @@ public class KontaktDao extends AbstractService implements GenericDao<Kontakt> {
 	}
 
 	@Override
-	public List<Kontakt> all() {
-		List<Kontakt> contacts = new ArrayList<Kontakt>();
+	public List<Auto> all() {
+		List<Auto> cars = new ArrayList<Auto>();
 
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
 
-		Query q = s.createQuery("SELECT k FROM Kontakt k");
-		Iterator<Kontakt> result = q.iterate();
+		Query q = s.createQuery("SELECT a FROM Auto a");
+		Iterator<Auto> result = q.iterate();
 		while (result.hasNext()) {
-			contacts.add(result.next());
+			cars.add(result.next());
 		}
 
 		t.commit();
 		s.close();
-		return contacts;
+		return cars;
 	}
 
 	@Override
-	public Kontakt update(Integer id, Kontakt data) {
+	public Auto update(Integer id, Auto data) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
-		Kontakt temp = (Kontakt) s.get(Kontakt.class, id);
-		temp.setKlient(data.getKlient());
-		temp.setTyp((data.getTypEnum()));
-		temp.setData(data.getData());
+		Auto temp = (Auto) s.get(Auto.class, id);
+		temp.setKapacita(data.getKapacita());
+		temp.setPobocka(data.getPobocka());
+		temp.setVelikost(data.getVelikost());
+		temp.setVybava(data.getVybava());
+		temp.setVykonnost(data.getVykonnost());
+		temp.setZnacka(data.getZnacka());
 		t.commit();
 		s.close();
 		return temp;
@@ -61,11 +61,10 @@ public class KontaktDao extends AbstractService implements GenericDao<Kontakt> {
 	public void delete(Integer id) {
 		Session s = getSf().openSession();
 		Transaction t = s.beginTransaction();
-		Query q = s.createQuery("DELETE Kontakt k WHERE k.id=:id")
-				.setParameter("id", id);
+		Query q = s.createQuery("DELETE Auto a WHERE a.id=:id").setParameter(
+				"id", id);
 		q.executeUpdate();
 		t.commit();
-		s.close();		
+		s.close();
 	}
-
 }

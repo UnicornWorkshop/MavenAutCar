@@ -2,7 +2,7 @@ package services;
 
 import java.util.List;
 
-public interface GenericDao<T> {
+public interface GenericService<T> {
 	
 	public void add(T item);
 	public List<T> all();

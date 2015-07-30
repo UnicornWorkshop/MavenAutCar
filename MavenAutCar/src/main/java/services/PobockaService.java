@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import entities.Pobocka;
 
 @Component
-public class PobockaDao extends AbstractService implements GenericDao<Pobocka> {
+public class PobockaService extends AbstractService implements GenericService<Pobocka> {
 	
 	public void add(Pobocka p) {
 		Session s = getSf().openSession();

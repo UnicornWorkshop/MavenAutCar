@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import entities.Klient;
 
 @Component
-public class KlientDao extends AbstractService implements GenericDao<Klient> {
+public class KlientService extends AbstractService implements GenericService<Klient> {
 
 	public void add(Klient item) {
 		Session s = getSf().openSession();
