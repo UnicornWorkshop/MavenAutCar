@@ -26,8 +26,7 @@ public class KlientController extends AbstractController<Klient> implements Gene
 
 	@Override
 	public Klient update(@RequestBody Klient item,@PathVariable Integer id) {
-		getService().update(id, item);
-		return item;
+		return getService().update(id, item);
 	}
 
 	@Override

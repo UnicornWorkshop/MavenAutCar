@@ -20,11 +20,8 @@ public class KlientService extends AbstractService<Klient> implements GenericSer
 	}
 
 	@Override
-	public Klient update(Integer id, Klient data) {
-		Klient k = new Klient();
-		k = (Klient) getDao().get(id);
-		k.setJmeno(data.getJmeno());
-		return k;		
+	public Klient update(Integer id, Klient item) {
+		return getDao().update(id, item);
 	}
 
 	@Override
