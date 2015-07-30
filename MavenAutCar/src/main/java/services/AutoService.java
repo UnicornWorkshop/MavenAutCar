@@ -19,8 +19,8 @@ public class AutoService extends AbstractService<Auto> implements GenericService
 	}
 
 	@Override
-	public void update(Integer id, Auto item) {
-		getDao().update(id, item);
+	public Auto update(Integer id, Auto item) {
+		return getDao().update(id, item);
 	}
 
 	@Override
