@@ -8,9 +8,11 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import entities.Klient;
 
+@Component
 public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 
 	public List<Klient> getAll() {
