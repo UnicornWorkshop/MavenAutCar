@@ -16,7 +16,7 @@ public class AutoService extends AbstractService<Auto> implements GenericService
 	private GenericDao<Pobocka> pobockaDao;
 		
 	public void add(Auto item) {
-		//rozsekat na auto a pobocku a pobocku ulozit
+		//rozsekat na auto a pobocku a nejdriv vlozit pobocku
 		pobockaDao.insert(item.getPobocka());
 				
 		getDao().insert(item);
