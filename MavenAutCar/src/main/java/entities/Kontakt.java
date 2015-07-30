@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Kontakt {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private Integer id;
 	@ManyToOne
 	private Klient klient;

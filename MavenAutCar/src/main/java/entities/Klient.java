@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Klient {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private Integer id;
 	private String jmeno;
 	//@OneToMany(mappedBy="klient")

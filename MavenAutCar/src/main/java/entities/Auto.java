@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 public class Auto {
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private Integer id;
 	private String znacka;
 	private Integer vykonnost;
