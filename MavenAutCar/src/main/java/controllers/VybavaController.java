@@ -7,33 +7,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import entities.Vybava;
+import services.GenericService;
+import services.VybavaService;
 
 @RequestMapping(value = "/equipment")
 @Controller
 public class VybavaController extends AbstractController<Vybava> implements GenericController<Vybava> {
 
+	private GenericService<Vybava> service = new VybavaService();
+	
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("equipment/all");
-		mav.addObject("equipments", getDao().all());
+		mav.addObject("equipments", service.all());
 		return mav;
 	}
 
 	@Override
 	public Vybava add(@RequestBody Vybava item) {
-		getDao().add(item);
+		service.add(item);
 		return item;
 	}
 
 	@Override
 	public Vybava update(@RequestBody Vybava item, @PathVariable Integer id) {
-		getDao().delete(id);
+		service.delete(id);
 		return item;
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getDao().delete(id);
+		service.delete(id);
 	}
 
 }

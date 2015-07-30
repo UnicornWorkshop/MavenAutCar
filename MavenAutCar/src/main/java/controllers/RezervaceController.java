@@ -7,34 +7,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import entities.Rezervace;
+import services.GenericService;
+import services.RezervaceService;
 
 @RequestMapping(value = "/reservation")
 @Controller
 public class RezervaceController extends AbstractController<Rezervace> implements GenericController<Rezervace> {
 
+	private GenericService<Rezervace> service = new RezervaceService();
+	
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("reservation/all");
-		mav.addObject("reservations", getDao().all());
+		mav.addObject("reservations", service.all());
 		return mav;
 	}
 
 	@Override
 	public Rezervace add(@RequestBody Rezervace item) {
-		getDao().add(item);
+		service.add(item);
 		return item;
 	}
 
 	@Override
 	public Rezervace update(@RequestBody Rezervace item,
 			@PathVariable Integer id) {
-		getDao().update(id, item);
+		service.update(id, item);
 		return item;
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getDao().delete(id);
+		service.delete(id);
 	}
 
 }
