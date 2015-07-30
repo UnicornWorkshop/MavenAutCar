@@ -22,7 +22,8 @@ public class AutoController extends AbstractController<Auto>  implements Generic
 
 	@Override
 	public Auto add(@RequestBody Auto item) {
-		getService().add(item);
+		//getService().add(item);
+		getFacade().add(item);
 		return item;
 	}
 

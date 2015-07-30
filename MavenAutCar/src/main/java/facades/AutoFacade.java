@@ -7,13 +7,8 @@ import entities.Auto;
 @Component
 public class AutoFacade extends AbstractFacade<Auto> implements GenericFacade<Auto> {
 	
-	public Auto add(Auto item) {
-		
-		
-		
-		
-		return null;
+	public void add(Auto item) {		
+		getService().add(item);
 	}
 	
-
 }
