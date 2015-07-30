@@ -1,6 +1,8 @@
 package controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,19 +20,19 @@ public class PobockaController extends AbstractController<Pobocka> implements Ge
 	}
 
 	@Override
-	public Pobocka add(Pobocka item) {
+	public Pobocka add(@RequestBody Pobocka item) {
 		getService().add(item);
 		return item;
 	}
 
 	@Override
-	public Pobocka update(Pobocka item, Integer id) {
+	public Pobocka update(@RequestBody Pobocka item, @PathVariable Integer id) {
 		getService().delete(id);
 		return item;
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(@PathVariable Integer id) {
 		getService().delete(id);
 	}
 
