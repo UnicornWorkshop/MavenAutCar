@@ -9,6 +9,7 @@ import dao.GenericDao;
 import entities.Rezervace;
 import entities.Pobocka;
 import entities.Klient;
+import entities.Auto;
 
 @Component
 public class RezervaceService extends AbstractService<Rezervace> implements GenericService<Rezervace> {
@@ -17,13 +18,16 @@ public class RezervaceService extends AbstractService<Rezervace> implements Gene
 	GenericDao<Klient> klientDao;
 	@Autowired
 	GenericDao<Pobocka> pobockaDao;
+	@Autowired
+	GenericService<Auto> autoService;
 	
 	@Override
 	public void add(Rezervace item) {
-		//vytahnout klienta a pobocky a ulozit to nejdriv
+		//vytahnout auto, klienta a pobocky a ulozit to nejdriv
 		klientDao.insert(item.getKlient());
 		pobockaDao.insert(item.getPobocka_z());
-		pobockaDao.insert(item.getPobocka_do());		
+		pobockaDao.insert(item.getPobocka_do());
+		autoService.add(item.getAuto());
 		
 		getDao().insert(item);
 	}
