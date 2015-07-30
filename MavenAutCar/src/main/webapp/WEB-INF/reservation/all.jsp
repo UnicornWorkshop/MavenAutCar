@@ -12,12 +12,12 @@
 <table border="1">
 <tr>
 <td width="50px">id</td>
-<td width="150px">jmeno</td>
+<td width="150px">klient</td>
 </tr>
-<c:forEach items="${clients}" var="client">
+<c:forEach items="${reservations}" var="reservation">
   <tr>
-  <td>${client.id}</td>
-  <td>${client.jmeno}</td>
+  <td>${reservation.id}</td>
+  <td>${reservation.klient.jmeno}</td>
   </tr>
 </c:forEach>
 </table>
