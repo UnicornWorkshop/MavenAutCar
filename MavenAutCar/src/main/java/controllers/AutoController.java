@@ -7,33 +7,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import entities.Auto;
+import services.AutoService;
+import services.GenericService;
 
 @RequestMapping(value = "/car")
 @Controller
 public class AutoController extends AbstractController<Auto>  implements GenericController<Auto> {
 
+	private GenericService<Auto> service = new AutoService();
+	
 	@Override
 	public ModelAndView all() {
+		//GenericService<Auto> service = new AutoService();
 		ModelAndView mav = new ModelAndView("car/all");
-		mav.addObject("cars", getDao().all());
+		mav.addObject("cars", service.all());
 		return mav;
 	}
 
 	@Override
 	public Auto add(@RequestBody Auto item) {
-		getDao().add(item);
+		service.add(item);
 		return item;
 	}
 
 	@Override
 	public Auto update(@RequestBody Auto item,@PathVariable Integer id) {
-		getDao().update(id, item);
+		service.update(id, item);
 		return item;
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getDao().delete(id);
+		service.delete(id);
 	}
 
 }
