@@ -20,11 +20,8 @@ public class VybavaService extends AbstractService<Vybava> implements GenericSer
 	}
 
 	@Override
-	public Vybava update(Integer id, Vybava data) {
-		Vybava item = new Vybava();
-		item = (Vybava) getDao().get(id);
-		item.setNazev(data.getNazev());
-		return item;
+	public Vybava update(Integer id, Vybava item) {
+		return getDao().update(id, item);
 	}
 
 	@Override

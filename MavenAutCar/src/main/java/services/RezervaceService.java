@@ -34,16 +34,8 @@ public class RezervaceService extends AbstractService<Rezervace> implements Gene
 	}
 
 	@Override
-	public Rezervace update(Integer id, Rezervace data) {
-		Rezervace item = new Rezervace();
-		item = (Rezervace) getDao().get(id);
-		item.setKlient(data.getKlient());
-		item.setAuto(data.getAuto());
-		item.setDatum_do(data.getDatum_do());
-		item.setDatum_od(data.getDatum_od());
-		item.setPobocka_do(data.getPobocka_do());
-		item.setPobocka_z(data.getPobocka_z());
-		return item;
+	public Rezervace update(Integer id, Rezervace item) {
+		return getDao().update(id, item);
 	}
 
 	@Override

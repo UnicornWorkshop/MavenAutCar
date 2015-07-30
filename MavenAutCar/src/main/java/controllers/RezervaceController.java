@@ -26,10 +26,8 @@ public class RezervaceController extends AbstractController<Rezervace> implement
 	}
 
 	@Override
-	public Rezervace update(@RequestBody Rezervace item,
-			@PathVariable Integer id) {
-		getService().update(id, item);
-		return item;
+	public Rezervace update(@RequestBody Rezervace item,@PathVariable Integer id) {
+		return getService().update(id, item);
 	}
 
 	@Override

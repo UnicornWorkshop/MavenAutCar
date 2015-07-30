@@ -27,8 +27,7 @@ public class VybavaController extends AbstractController<Vybava> implements Gene
 
 	@Override
 	public Vybava update(@RequestBody Vybava item, @PathVariable Integer id) {
-		getService().delete(id);
-		return item;
+		return getService().update(id, item);
 	}
 
 	@Override
