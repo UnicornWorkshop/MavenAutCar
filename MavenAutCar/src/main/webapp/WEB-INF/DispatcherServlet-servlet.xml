@@ -5,7 +5,7 @@
 
 	<mvc:annotation-driven />
 
-	<context:component-scan base-package="controllers,services,dao" />
+	<context:component-scan base-package="controllers,facades,services,dao" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
