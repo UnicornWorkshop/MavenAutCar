@@ -73,7 +73,7 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		Klient k = (Klient) getSession().get(Klient.class, id);
 		getSession().delete(k);
 		t.commit();
-		//closeSession();
+		closeSession();
 	}
 
 	@Override
