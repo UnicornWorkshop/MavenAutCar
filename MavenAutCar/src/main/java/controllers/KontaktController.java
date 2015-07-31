@@ -15,23 +15,23 @@ public class KontaktController extends AbstractController<Kontakt> implements Ge
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("contacts/all");
-		mav.addObject("contacts", getService().all());
+		mav.addObject("contacts", getFacade().all());
 		return mav;
 	}
 
 	@Override
 	public Kontakt add(@RequestBody Kontakt item) {
-		getService().add(item);
+		getFacade().add(item);
 		return item;
 	}
 
 	@Override
 	public Kontakt update(@RequestBody Kontakt item, @PathVariable Integer id) {
-		return getService().update(id, item);
+		return getFacade().update(id, item);
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getService().delete(id);
+		getFacade().delete(id);
 	}
 }

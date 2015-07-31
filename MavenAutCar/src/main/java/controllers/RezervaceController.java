@@ -15,24 +15,24 @@ public class RezervaceController extends AbstractController<Rezervace> implement
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("reservation/all");
-		mav.addObject("reservations", getService().all());
+		mav.addObject("reservations", getFacade().all());
 		return mav;
 	}
 
 	@Override
 	public Rezervace add(@RequestBody Rezervace item) {
-		getService().add(item);
+		getFacade().add(item);
 		return item;
 	}
 
 	@Override
 	public Rezervace update(@RequestBody Rezervace item,@PathVariable Integer id) {
-		return getService().update(id, item);
+		return getFacade().update(id, item);
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getService().delete(id);
+		getFacade().delete(id);
 	}
 
 }

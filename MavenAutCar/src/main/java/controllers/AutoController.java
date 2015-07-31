@@ -14,28 +14,26 @@ public class AutoController extends AbstractController<Auto>  implements Generic
 	
 	@Override
 	public ModelAndView all() {
-		//GenericgetService()<Auto> getService() = new AutogetService()();
 		ModelAndView mav = new ModelAndView("car/all");
-		mav.addObject("cars", getService().all());
+		mav.addObject("cars", getFacade().all());
 		return mav;
 	}
 
 	@Override
 	public Auto add(@RequestBody Auto item) {
-		//getService().add(item);
 		getFacade().add(item);
 		return item;
 	}
 
 	@Override
 	public Auto update(@RequestBody Auto item,@PathVariable Integer id) {
-		getService().update(id, item);
+		getFacade().update(id, item);
 		return item;
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getService().delete(id);
+		getFacade().delete(id);
 	}
 
 }

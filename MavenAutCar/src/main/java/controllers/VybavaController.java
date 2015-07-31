@@ -15,24 +15,24 @@ public class VybavaController extends AbstractController<Vybava> implements Gene
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("equipment/all");
-		mav.addObject("equipments", getService().all());
+		mav.addObject("equipments", getFacade().all());
 		return mav;
 	}
 
 	@Override
 	public Vybava add(@RequestBody Vybava item) {
-		getService().add(item);
+		getFacade().add(item);
 		return item;
 	}
 
 	@Override
 	public Vybava update(@RequestBody Vybava item, @PathVariable Integer id) {
-		return getService().update(id, item);
+		return getFacade().update(id, item);
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getService().delete(id);
+		getFacade().delete(id);
 	}
 
 }

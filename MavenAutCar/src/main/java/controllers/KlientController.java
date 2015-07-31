@@ -15,23 +15,23 @@ public class KlientController extends AbstractController<Klient> implements Gene
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("client/all");
-		mav.addObject("clients", getService().all());
+		mav.addObject("clients", getFacade().all());
 		return mav;
 	}
 
 	public Klient add(@RequestBody final Klient item) {
-		getService().add(item);
+		getFacade().add(item);
 		return item;
 	}
 
 	@Override
 	public Klient update(@RequestBody Klient item,@PathVariable Integer id) {
-		return getService().update(id, item);
+		return getFacade().update(id, item);
 	}
 
 	@Override
 	public void delete(@PathVariable Integer id) {
-		getService().delete(id);
+		getFacade().delete(id);
 	}
 	
 }
