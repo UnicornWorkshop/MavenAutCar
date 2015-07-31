@@ -40,7 +40,23 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 	@Override
 	public void insert(Klient item) {
 		createSession();
-		Transaction t = getSession().beginTransaction();
+		Transaction t = getSession().beginTransaction();	
+		/*
+		 * kontrola, jestli zaznam neni uz v db
+		 */
+		//pokud bylo id poslano v json
+		Integer id = item.getId();
+		Klient result = null;
+		
+		if(id != null) {
+			result = (Klient) getSession().get(Klient.class, id);
+		}
+		//pokud byl nalezen klient
+		if(result != null) {
+			return;
+		}
+
+		item.setId(null);
 		getSession().persist(item);
 		t.commit();
 		closeSession();
