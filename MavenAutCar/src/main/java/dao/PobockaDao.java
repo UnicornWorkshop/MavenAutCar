@@ -74,6 +74,10 @@ public class PobockaDao extends AbstractDao implements IPobockaDao {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
 		Pobocka temp = (Pobocka) getSession().get(Pobocka.class, id);
+		//pokud zaznam neexistuje
+		if(temp == null) {
+			return null;
+		}
 		temp.setMesto(item.getMesto());
 		t.commit();
 		closeSession();
