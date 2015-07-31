@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import entities.Klient;
 import entities.Rezervace;
 import entities.Rezervace;
 
@@ -42,6 +43,24 @@ public class RezervaceDao extends AbstractDao implements GenericDao<Rezervace> {
 	public void insert(Rezervace item) {
 		createSession();
 		Transaction t = getSession().beginTransaction();
+		/*
+		 * kontrola, jestli neposilam obsazene id
+		 * - to by znamenalo ze byl insert zavolan pri vkladani
+		 *   prvku, ktery na toto odkazuje pres cizi klic
+		 */
+		//pokud bylo id poslano v json
+		Integer id = item.getId();
+		Rezervace result = null;
+		
+		if(id != null) {
+			result = (Rezervace) getSession().get(Rezervace.class, id);
+		}
+		//pokud byl nalezen klient
+		if(result != null) {
+			return;
+		}
+
+		item.setId(null);
 		getSession().persist(item);
 		t.commit();
 		closeSession();

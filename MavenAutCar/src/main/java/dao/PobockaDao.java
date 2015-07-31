@@ -53,6 +53,24 @@ public class PobockaDao extends AbstractDao implements IPobockaDao {
 	public void insert(Pobocka item) {
 		createSession();
 		Transaction t = getSession().beginTransaction();
+		/*
+		 * kontrola, jestli neposilam obsazene id
+		 * - to by znamenalo ze byl insert zavolan pri vkladani
+		 *   prvku, ktery na toto odkazuje pres cizi klic
+		 */
+		//pokud bylo id poslano v json
+		Integer id = item.getId();
+		Pobocka result = null;
+		
+		if(id != null) {
+			result = (Pobocka) getSession().get(Pobocka.class, id);
+		}
+		//pokud byl nalezen klient
+		if(result != null) {
+			return;
+		}
+
+		item.setId(null);
 		getSession().persist(item);
 		t.commit();
 		closeSession();	

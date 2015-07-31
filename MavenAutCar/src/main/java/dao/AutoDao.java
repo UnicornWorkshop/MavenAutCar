@@ -25,6 +25,24 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 	public void insert(Auto item) {
 		createSession();
 		Transaction t = getSession().beginTransaction();
+		/*
+		 * kontrola, jestli neposilam obsazene id
+		 * - to by znamenalo ze byl insert zavolan pri vkladani
+		 *   prvku, ktery na toto odkazuje pres cizi klic
+		 */
+		//pokud bylo id poslano v json
+		Integer id = item.getId();
+		Auto result = null;
+		
+		if(id != null) {
+			result = (Auto) getSession().get(Auto.class, id);
+		}
+		//pokud byl nalezen klient
+		if(result != null) {
+			return;
+		}
+
+		item.setId(null);
 		getSession().persist(item);
 		t.commit();
 		closeSession();

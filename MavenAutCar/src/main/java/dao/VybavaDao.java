@@ -39,6 +39,24 @@ public class VybavaDao extends AbstractDao implements GenericDao<Vybava> {
 	public void insert(Vybava item) {
 		createSession();
 		Transaction t = getSession().beginTransaction();
+		/*
+		 * kontrola, jestli neposilam obsazene id
+		 * - to by znamenalo ze byl insert zavolan pri vkladani
+		 *   prvku, ktery na toto odkazuje pres cizi klic
+		 */
+		//pokud bylo id poslano v json
+		Integer id = item.getId();
+		Vybava result = null;
+		
+		if(id != null) {
+			result = (Vybava) getSession().get(Vybava.class, id);
+		}
+		//pokud byl nalezen klient
+		if(result != null) {
+			return;
+		}
+
+		item.setId(null);
 		getSession().persist(item);
 		t.commit();
 		closeSession();

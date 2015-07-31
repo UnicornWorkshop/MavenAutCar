@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.Transaction;
-
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import entities.Kontakt;
@@ -40,6 +39,24 @@ public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
 	public void insert(Kontakt item) {
 		createSession();
 		Transaction t = getSession().beginTransaction();
+		/*
+		 * kontrola, jestli neposilam obsazene id
+		 * - to by znamenalo ze byl insert zavolan pri vkladani
+		 *   prvku, ktery na toto odkazuje pres cizi klic
+		 */
+		//pokud bylo id poslano v json
+		Integer id = item.getId();
+		Kontakt result = null;
+		
+		if(id != null) {
+			result = (Kontakt) getSession().get(Kontakt.class, id);
+		}
+		//pokud byl nalezen klient
+		if(result != null) {
+			return;
+		}
+
+		item.setId(null);
 		getSession().persist(item);
 		t.commit();
 		closeSession();

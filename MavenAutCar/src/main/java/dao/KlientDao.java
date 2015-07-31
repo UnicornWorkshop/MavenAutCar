@@ -42,7 +42,9 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		createSession();
 		Transaction t = getSession().beginTransaction();	
 		/*
-		 * kontrola, jestli zaznam neni uz v db
+		 * kontrola, jestli neposilam obsazene id
+		 * - to by znamenalo ze byl insert zavolan pri vkladani
+		 *   prvku, ktery na toto odkazuje pres cizi klic
 		 */
 		//pokud bylo id poslano v json
 		Integer id = item.getId();
