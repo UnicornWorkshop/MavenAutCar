@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import entities.Klient;
@@ -12,6 +14,12 @@ import entities.Klient;
 @Controller
 public class KlientController extends AbstractController<Klient> implements GenericController<Klient> {
 	
+	@RequestMapping(method=RequestMethod.GET)
+	public @ResponseBody ModelAndView newKlient() {
+		ModelAndView mav = new ModelAndView("client/new");
+		return mav;
+	}
+
 	@Override
 	public ModelAndView all() {
 		ModelAndView mav = new ModelAndView("client/all");
