@@ -3,16 +3,28 @@ package dao;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import entities.Auto;
+import entities.Pobocka;
+import entities.Vybava;
 
 @Component
-public class AutoDao extends AbstractDao implements GenericDao<Auto> {
+public class AutoDao extends AbstractDao implements IAutoDao {
 
+	@Override
+	public Set<Vybava> getEquipment(Integer id) {
+		createSession();
+		Auto auto = (Auto) getSession().get(Auto.class, id);
+		Set<Vybava> cars = auto.getVybava();
+		closeSession();
+		return cars;
+	}
+	
 	@Override
 	public Auto get(Integer id) {
 		createSession();

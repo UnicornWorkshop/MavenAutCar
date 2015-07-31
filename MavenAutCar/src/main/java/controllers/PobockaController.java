@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import entities.Pobocka;
-import services.IPobockaService;
+import facades.IPobockaFacade;
 
 @RequestMapping(value = "/office")
 @Controller
 public class PobockaController extends AbstractController<Pobocka> implements GenericController<Pobocka> {
 	
 	@Autowired
-	private IPobockaService pobockaService;
+	private IPobockaFacade pobockaFacade;
 	
 	@RequestMapping(value="/cars/{id}", method=RequestMethod.GET)
 	public ModelAndView allCars(@PathVariable Integer id) {
 		ModelAndView mav = new ModelAndView("office/cars");
-		mav.addObject("cars", pobockaService.getCars(id));
+		mav.addObject("cars", pobockaFacade.getCars(id));
 		return mav;
 	}
 	

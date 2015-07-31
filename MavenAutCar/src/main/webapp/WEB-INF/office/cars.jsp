@@ -12,7 +12,7 @@
 	<table border="1">
 		<tr>
 			<td width="50px">id</td>
-			<td width="150px">location</td>
+			<td width="150px">znacka</td>
 		</tr>
 		<c:forEach items="${cars}" var="car">
 			<tr>
