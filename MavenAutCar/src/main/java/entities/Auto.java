@@ -2,14 +2,13 @@ package entities;
 
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Auto {
@@ -22,9 +21,15 @@ public class Auto {
 	private Integer kapacita;
 	@ManyToOne
 	private Pobocka pobocka;
-	@ManyToMany
+	@ManyToMany(mappedBy="auta", fetch=FetchType.EAGER)
 	private Set<Vybava> vybava;
-	
+	@OneToMany(mappedBy="auto", fetch=FetchType.EAGER)
+	private Set<Rezervace> rezervace;
+
+	public Set<Rezervace> getRezervace() {
+		return rezervace;
+	}
+
 	public Auto(String znacka, Integer vykonnost, Integer velikost, Integer kapacita) {
 		super();
 		this.znacka = znacka;
@@ -84,7 +89,7 @@ public class Auto {
 	public Set<Vybava> getVybava() {
 		return vybava;
 	}
-
+	
 	public void setVybava(Set<Vybava> vybava) {
 		this.vybava = vybava;
 	}

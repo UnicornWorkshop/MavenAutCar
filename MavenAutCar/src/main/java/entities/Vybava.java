@@ -1,9 +1,12 @@
 package entities;
 
 import java.util.Set;
-import javax.persistence.Entity;  
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;  
-import javax.persistence.Id;  
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -12,8 +15,11 @@ public class Vybava {
     @GeneratedValue
 	private Integer id;
 	private String nazev;
-	//@ManyToMany
-	//private Set<Auto> auto;
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name = "Auto_Vybava",
+			joinColumns={@JoinColumn(name="Auto_id")}, 
+            inverseJoinColumns={@JoinColumn(name="Vybava_id")})
+	private Set<Auto> auta;
 	
 	public Vybava(){
 		
@@ -33,10 +39,7 @@ public class Vybava {
 	public void setNazev(String nazev) {
 		this.nazev = nazev;
 	}
-	/*public Set<Auto> getAuto() {
-		return auto;
+	public Set<Auto> getAuta() {
+		return auta;
 	}
-	public void setAuto(Set<Auto> auto) {
-		this.auto = auto;
-	}*/	
 }

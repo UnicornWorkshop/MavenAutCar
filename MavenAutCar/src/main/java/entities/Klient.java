@@ -3,10 +3,9 @@ package entities;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,9 +14,15 @@ public class Klient {
 	@GeneratedValue
 	private Integer id;
 	private String jmeno;
-	//@OneToMany(mappedBy="klient")
-	//private Set<Kontakt> kontakt;
+	@OneToMany(mappedBy="klient", fetch=FetchType.EAGER)
+	private Set<Kontakt> kontakty;
+	@OneToMany(mappedBy="klient", fetch=FetchType.EAGER)
+	private Set<Rezervace> rezervace;
 	
+	public void setRezervace(Set<Rezervace> rezervace) {
+		this.rezervace = rezervace;
+	}
+
 	public Klient(String jmeno) {
 		super();
 		this.jmeno = jmeno;
@@ -42,13 +47,8 @@ public class Klient {
 	public void setJmeno(String jmeno) {
 		this.jmeno = jmeno;
 	}
-	/*
-	public Set<Kontakt> getKontakt() {
-		return kontakt;
-	}
 	
-	public void setKontakt(Set<Kontakt> kontakt) {
-		this.kontakt = kontakt;
+	public Set<Kontakt> getKontakty() {
+		return kontakty;
 	}
-	*/
 }
