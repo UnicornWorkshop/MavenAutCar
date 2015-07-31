@@ -46,6 +46,10 @@ public class Auto {
 		return id;
 	}
 	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public Pobocka getPobocka() {
 		return pobocka;
 	}

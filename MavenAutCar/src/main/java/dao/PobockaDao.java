@@ -3,20 +3,30 @@ package dao;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import entities.Pobocka;
-import entities.Kontakt;
+import entities.Auto;
 import entities.Pobocka;
 
 @Component
-public class PobockaDao extends AbstractDao implements GenericDao<Pobocka> {
+public class PobockaDao extends AbstractDao implements IPobockaDao {
 
+	@Override
+	public Set<Auto> getCars(Integer id) {
+		createSession();
+		//Transaction t = (Transaction) getSession().beginTransaction();
+		Pobocka pobocka = (Pobocka) getSession().get(Pobocka.class, id);
+		Set<Auto> cars = pobocka.getAuta();
+		//t.commit();
+		closeSession();
+		return cars;
+	}
+	
+	@Override
 	public List<Pobocka> getAll() {
 		List<Pobocka> items = new ArrayList<>();
 		createSession();
