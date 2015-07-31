@@ -32,19 +32,6 @@ function updateFunc(id) {
 }
 
 function deleteFunc(id) {
-	/*$.postJSON2 = function(url, data, callback) {
-    return jQuery.ajax({
-    headers: { 
-        'Accept': 'application/json',
-        'Content-Type': 'application/json' 
-    },
-    'type': 'DELETE',
-    'url': url,
-    'data': JSON.stringify(data),
-    'dataType': 'json',
-    'success': callback
-    });
-    };*/
 	$.request("http://localhost:8080/MavenAutCar/client/delete/"+id, "DELETE", null, null);
 }
 
