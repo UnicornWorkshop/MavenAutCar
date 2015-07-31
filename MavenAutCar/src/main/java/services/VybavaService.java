@@ -10,8 +10,9 @@ import entities.Vybava;
 public class VybavaService extends AbstractService<Vybava> implements GenericService<Vybava> {
 	
 	@Override
-	public void add(Vybava item) {
+	public Vybava add(Vybava item) {
 		getDao().insert(item);
+		return item;
 	}
 
 	@Override

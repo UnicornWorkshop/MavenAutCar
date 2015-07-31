@@ -10,8 +10,8 @@ import entities.Vybava;
 public class VybavaFacade extends AbstractFacade<Vybava>implements GenericFacade<Vybava> {
 	
 	@Override
-	public void add(Vybava item) {
-		getService().add(item);		
+	public Vybava add(Vybava item) {
+		return getService().add(item);		
 	}
 
 	@Override

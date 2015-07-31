@@ -10,8 +10,9 @@ import entities.Klient;
 public class KlientService extends AbstractService<Klient> implements GenericService<Klient> {
 
 	@Override
-	public void add(Klient item) {
-		getDao().insert(item);		
+	public Klient add(Klient item) {
+		getDao().insert(item);	
+		return item;
 	}
 
 	@Override

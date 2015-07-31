@@ -22,8 +22,9 @@ public class PobockaService extends AbstractService<Pobocka> implements IPobocka
 	}
 	
 	@Override
-	public void add(Pobocka item) {
+	public Pobocka add(Pobocka item) {
 		getDao().insert(item);
+		return item;
 	}
 
 	@Override

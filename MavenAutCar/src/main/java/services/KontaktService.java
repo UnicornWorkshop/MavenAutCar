@@ -16,11 +16,12 @@ public class KontaktService extends AbstractService<Kontakt> implements GenericS
 	private GenericDao<Klient> klientDao;
 	
 	@Override
-	public void add(Kontakt item) {
+	public Kontakt add(Kontakt item) {
 		//rozbit na klienta a kontakt a vlozit nejdriv kontakt
 		klientDao.insert(item.getKlient());
 		
 		getDao().insert(item);
+		return item;
 	}
 
 	@Override

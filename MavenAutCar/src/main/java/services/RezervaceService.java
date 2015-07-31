@@ -22,7 +22,7 @@ public class RezervaceService extends AbstractService<Rezervace> implements Gene
 	GenericService<Auto> autoService;
 	
 	@Override
-	public void add(Rezervace item) {
+	public Rezervace add(Rezervace item) {
 		//vytahnout auto, klienta a pobocky a ulozit to nejdriv
 		klientDao.insert(item.getKlient());
 		pobockaDao.insert(item.getPobocka_z());
@@ -30,6 +30,7 @@ public class RezervaceService extends AbstractService<Rezervace> implements Gene
 		autoService.add(item.getAuto());
 		
 		getDao().insert(item);
+		return item;
 	}
 
 	@Override

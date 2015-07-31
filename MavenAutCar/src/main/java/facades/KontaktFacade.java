@@ -10,8 +10,8 @@ import entities.Kontakt;
 public class KontaktFacade extends AbstractFacade<Kontakt>implements GenericFacade<Kontakt> {
 	
 	@Override
-	public void add(Kontakt item) {
-		getService().add(item);		
+	public Kontakt add(Kontakt item) {
+		return getService().add(item);	
 	}
 
 	@Override

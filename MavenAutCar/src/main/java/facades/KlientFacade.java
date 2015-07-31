@@ -10,8 +10,8 @@ import entities.Klient;
 public class KlientFacade extends AbstractFacade<Klient>implements GenericFacade<Klient> {
 
 	@Override
-	public void add(Klient item) {
-		getService().add(item);
+	public Klient add(Klient item) {
+		return getService().add(item);
 	}
 
 	@Override

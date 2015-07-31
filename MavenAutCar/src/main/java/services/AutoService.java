@@ -15,11 +15,12 @@ public class AutoService extends AbstractService<Auto> implements GenericService
 	@Autowired
 	private GenericDao<Pobocka> pobockaDao;
 		
-	public void add(Auto item) {
+	public Auto add(Auto item) {
 		//rozsekat na auto a pobocku a nejdriv vlozit pobocku
 		pobockaDao.insert(item.getPobocka());
 				
 		getDao().insert(item);
+		return item;
 	}
 
 	@Override

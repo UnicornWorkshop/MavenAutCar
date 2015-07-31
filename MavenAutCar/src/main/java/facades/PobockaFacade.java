@@ -10,8 +10,8 @@ import entities.Pobocka;
 public class PobockaFacade extends AbstractFacade<Pobocka>implements GenericFacade<Pobocka> {
 	
 	@Override
-	public void add(Pobocka item) {
-		getService().add(item);
+	public Pobocka add(Pobocka item) {
+		return getService().add(item);
 	}
 
 	@Override

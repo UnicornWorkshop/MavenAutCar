@@ -10,8 +10,8 @@ import entities.Auto;
 public class AutoFacade extends AbstractFacade<Auto> implements GenericFacade<Auto> {
 	
 	@Override
-	public void add(Auto item) {		
-		getService().add(item);
+	public Auto add(Auto item) {		
+		return getService().add(item);
 	}
 
 	@Override

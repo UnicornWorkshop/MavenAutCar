@@ -10,8 +10,8 @@ import entities.Rezervace;
 public class RezervaceFacade extends AbstractFacade<Rezervace>implements GenericFacade<Rezervace> {
 	
 	@Override
-	public void add(Rezervace item) {
-		getService().add(item);	
+	public Rezervace add(Rezervace item) {
+		return getService().add(item);	
 	}
 
 	@Override
