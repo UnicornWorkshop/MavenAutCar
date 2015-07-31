@@ -3,7 +3,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
-$.postJSON = function(url, method, data, callback) {
+$.request = function(url, method, data, callback) {
     return jQuery.ajax({
     headers: { 
         'Accept': 'application/json',
@@ -13,7 +13,7 @@ $.postJSON = function(url, method, data, callback) {
     'url': url,
     'data': JSON.stringify(data),
     'dataType': 'json',
-    'success': callback
+    'success': null
     });
 };
 
@@ -21,18 +21,18 @@ function insertFunc () {
 	var value = document.getElementById('jmeno').value;
 	var object = {"jmeno": value};
 	
-	$.postJSON("http://localhost:8080/MavenAutCar/client/add", "POST",object, null);	
+	$.request("http://localhost:8080/MavenAutCar/client/add", "POST",object, null);	
 }
 
 function updateFunc(id) {	
 	var value = document.getElementById('jmeno'+id).value;
 	var object = {"jmeno": value};
 	
-	$.postJSON("http://localhost:8080/MavenAutCar/client/update/"+id, "PUT", object, null);
+	$.request("http://localhost:8080/MavenAutCar/client/update/"+id, "PUT", object, null);
 }
 
 function deleteFunc(id) {
-	$.postJSON2 = function(url, data, callback) {
+	/*$.postJSON2 = function(url, data, callback) {
     return jQuery.ajax({
     headers: { 
         'Accept': 'application/json',
@@ -44,8 +44,8 @@ function deleteFunc(id) {
     'dataType': 'json',
     'success': callback
     });
-    };
-	$.postJSON2("http://localhost:8080/MavenAutCar/client/delete/"+id, null, null);
+    };*/
+	$.request("http://localhost:8080/MavenAutCar/client/delete/"+id, "DELETE", null, null);
 }
 
 
