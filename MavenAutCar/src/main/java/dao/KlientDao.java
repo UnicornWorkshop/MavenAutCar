@@ -25,7 +25,7 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 			items.add(result.next());
 		}
 		t.commit();
-		closeSession();
+		//closeSession();
 		return items;
 	}
 
@@ -33,7 +33,7 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 	public Klient get(Integer id) {
 		createSession();
 		Klient result = (Klient) getSession().get(Klient.class, id);
-		closeSession();
+		//closeSession();
 		return result;
 	}
 
@@ -61,17 +61,19 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		item.setId(null);
 		getSession().persist(item);
 		t.commit();
-		closeSession();
+		//closeSession();
 	}
 
 	@Override
 	public void delete(Integer id) {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
-		Query q = getSession().createQuery("DELETE Klient k WHERE k.id=:id").setParameter("id", id);
-		q.executeUpdate();
+		//Query q = getSession().createQuery("DELETE Klient k WHERE k.id=:id").setParameter("id", id);
+		//q.executeUpdate();
+		Klient k = (Klient) getSession().get(Klient.class, id);
+		getSession().delete(k);
 		t.commit();
-		closeSession();
+		//closeSession();
 	}
 
 	@Override
@@ -85,7 +87,7 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		}
 		temp.setJmeno(item.getJmeno());
 		t.commit();
-		closeSession();
+		//closeSession();
 		return temp;
 	}
 }

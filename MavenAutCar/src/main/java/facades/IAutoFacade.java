@@ -8,5 +8,6 @@ import entities.Vybava;
 public interface IAutoFacade extends GenericFacade<Auto> {
 	
 	public Set<Vybava> getEquipment(Integer id);
+	public Auto getCar(Integer id);
 
 }

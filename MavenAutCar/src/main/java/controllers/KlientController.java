@@ -17,6 +17,7 @@ public class KlientController extends AbstractController<Klient> implements Gene
 	@RequestMapping(method=RequestMethod.GET)
 	public @ResponseBody ModelAndView newKlient() {
 		ModelAndView mav = new ModelAndView("client/new");
+		mav.addObject("clients", getFacade().all());
 		return mav;
 	}
 
