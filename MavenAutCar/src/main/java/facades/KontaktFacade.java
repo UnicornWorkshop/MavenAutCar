@@ -1,16 +1,32 @@
 package facades;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
-import entities.Auto;
 import entities.Kontakt;
 
 @Component
 public class KontaktFacade extends AbstractFacade<Kontakt>implements GenericFacade<Kontakt> {
 	
+	@Override
 	public void add(Kontakt item) {
-		
-		
+		getService().add(item);		
+	}
+
+	@Override
+	public List<Kontakt> all() {
+		return getService().all();
+	}
+
+	@Override
+	public Kontakt update(Integer id, Kontakt item) {
+		return getService().update(id, item);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		getService().delete(id);		
 	}
 
 }
