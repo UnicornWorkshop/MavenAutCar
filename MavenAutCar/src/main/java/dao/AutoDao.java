@@ -12,7 +12,7 @@ import entities.Auto;
 
 @Component
 public class AutoDao extends AbstractDao implements GenericDao<Auto> {
-	
+
 	@Override
 	public Auto get(Integer id) {
 		createSession();
@@ -27,7 +27,7 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		Transaction t = getSession().beginTransaction();
 		getSession().persist(item);
 		t.commit();
-		closeSession();	
+		closeSession();
 	}
 
 	@Override
@@ -42,18 +42,17 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		}
 		t.commit();
 		closeSession();
-		return items;		
+		return items;
 	}
 
 	@Override
 	public void delete(Integer id) {
 		createSession();
 		Transaction t = getSession().beginTransaction();
-		Query q = getSession().createQuery("DELETE Auto a WHERE a.id=:id").setParameter(
-				"id", id);
+		Query q = getSession().createQuery("DELETE Auto a WHERE a.id=:id").setParameter("id", id);
 		q.executeUpdate();
 		t.commit();
-		closeSession();		
+		closeSession();
 	}
 
 	@Override
@@ -61,6 +60,10 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		createSession();
 		Transaction t = getSession().beginTransaction();
 		Auto temp = (Auto) getSession().get(Auto.class, id);
+		// pokud zaznam neexistuje
+		if (temp == null) {
+			return null;
+		}
 		temp.setKapacita(item.getKapacita());
 		temp.setPobocka(item.getPobocka());
 		temp.setVelikost(item.getVelikost());
@@ -71,5 +74,5 @@ public class AutoDao extends AbstractDao implements GenericDao<Auto> {
 		closeSession();
 		return temp;
 	}
-	
+
 }

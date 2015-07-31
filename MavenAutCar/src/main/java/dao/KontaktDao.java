@@ -42,15 +42,14 @@ public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
 		Transaction t = getSession().beginTransaction();
 		getSession().persist(item);
 		t.commit();
-		closeSession();	
+		closeSession();
 	}
 
 	@Override
 	public void delete(Integer id) {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
-		Query q = getSession().createQuery("DELETE Kontakt k WHERE k.id=:id").setParameter(
-				"id", id);
+		Query q = getSession().createQuery("DELETE Kontakt k WHERE k.id=:id").setParameter("id", id);
 		q.executeUpdate();
 		t.commit();
 		closeSession();
@@ -61,6 +60,10 @@ public class KontaktDao extends AbstractDao implements GenericDao<Kontakt> {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
 		Kontakt temp = (Kontakt) getSession().get(Kontakt.class, id);
+		// pokud zaznam neexistuje
+		if (temp == null) {
+			return null;
+		}
 		temp.setKlient(item.getKlient());
 		temp.setTyp(item.getTypEnum());
 		temp.setData(item.getData());

@@ -43,15 +43,14 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		Transaction t = getSession().beginTransaction();
 		getSession().persist(item);
 		t.commit();
-		closeSession();	
+		closeSession();
 	}
 
 	@Override
 	public void delete(Integer id) {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
-		Query q = getSession().createQuery("DELETE Klient k WHERE k.id=:id").setParameter(
-				"id", id);
+		Query q = getSession().createQuery("DELETE Klient k WHERE k.id=:id").setParameter("id", id);
 		q.executeUpdate();
 		t.commit();
 		closeSession();
@@ -62,6 +61,10 @@ public class KlientDao extends AbstractDao implements GenericDao<Klient> {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
 		Klient temp = (Klient) getSession().get(Klient.class, id);
+		// pokud zaznam neexistuje
+		if (temp == null) {
+			return null;
+		}
 		temp.setJmeno(item.getJmeno());
 		t.commit();
 		closeSession();

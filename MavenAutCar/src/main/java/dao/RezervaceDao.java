@@ -44,15 +44,14 @@ public class RezervaceDao extends AbstractDao implements GenericDao<Rezervace> {
 		Transaction t = getSession().beginTransaction();
 		getSession().persist(item);
 		t.commit();
-		closeSession();	
+		closeSession();
 	}
 
 	@Override
 	public void delete(Integer id) {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
-		Query q = getSession().createQuery("DELETE Rezervace k WHERE k.id=:id").setParameter(
-				"id", id);
+		Query q = getSession().createQuery("DELETE Rezervace k WHERE k.id=:id").setParameter("id", id);
 		q.executeUpdate();
 		t.commit();
 		closeSession();
@@ -63,6 +62,10 @@ public class RezervaceDao extends AbstractDao implements GenericDao<Rezervace> {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
 		Rezervace temp = (Rezervace) getSession().get(Rezervace.class, id);
+		// pokud zaznam neexistuje
+		if (temp == null) {
+			return null;
+		}
 		temp.setAuto(item.getAuto());
 		temp.setDatum_do(item.getDatum_od());
 		temp.setDatum_od(item.getDatum_od());

@@ -41,15 +41,14 @@ public class VybavaDao extends AbstractDao implements GenericDao<Vybava> {
 		Transaction t = getSession().beginTransaction();
 		getSession().persist(item);
 		t.commit();
-		closeSession();	
+		closeSession();
 	}
 
 	@Override
 	public void delete(Integer id) {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
-		Query q = getSession().createQuery("DELETE Vybava k WHERE k.id=:id").setParameter(
-				"id", id);
+		Query q = getSession().createQuery("DELETE Vybava k WHERE k.id=:id").setParameter("id", id);
 		q.executeUpdate();
 		t.commit();
 		closeSession();
@@ -60,6 +59,10 @@ public class VybavaDao extends AbstractDao implements GenericDao<Vybava> {
 		createSession();
 		Transaction t = (Transaction) getSession().beginTransaction();
 		Vybava temp = (Vybava) getSession().get(Vybava.class, id);
+		// pokud zaznam neexistuje
+		if (temp == null) {
+			return null;
+		}
 		temp.setNazev(item.getNazev());
 		t.commit();
 		closeSession();
