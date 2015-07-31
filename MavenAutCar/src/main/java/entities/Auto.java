@@ -26,6 +26,10 @@ public class Auto {
 	@OneToMany(mappedBy="auto", fetch=FetchType.EAGER)
 	private Set<Rezervace> rezervace;
 
+	public void setRezervace(Set<Rezervace> rezervace) {
+		this.rezervace = rezervace;
+	}
+
 	public Set<Rezervace> getRezervace() {
 		return rezervace;
 	}

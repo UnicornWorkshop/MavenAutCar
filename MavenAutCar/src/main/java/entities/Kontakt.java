@@ -15,6 +15,10 @@ public class Kontakt {
 	private String data;
 	private String typ;
 	
+	public void setTyp(String typ) {
+		this.typ = typ;
+	}
+
 	public Kontakt(Klient klient, TypyKontaktu typ, String data) {
 		super();
 		this.klient = klient;

@@ -21,6 +21,14 @@ public class Vybava {
             inverseJoinColumns={@JoinColumn(name="Vybava_id")})
 	private Set<Auto> auta;
 	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setAuta(Set<Auto> auta) {
+		this.auta = auta;
+	}
+
 	public Vybava(){
 		
 	}

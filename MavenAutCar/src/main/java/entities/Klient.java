@@ -19,6 +19,14 @@ public class Klient {
 	@OneToMany(mappedBy="klient", fetch=FetchType.EAGER)
 	private Set<Rezervace> rezervace;
 	
+	public Set<Rezervace> getRezervace() {
+		return rezervace;
+	}
+
+	public void setKontakty(Set<Kontakt> kontakty) {
+		this.kontakty = kontakty;
+	}
+
 	public void setRezervace(Set<Rezervace> rezervace) {
 		this.rezervace = rezervace;
 	}

@@ -26,6 +26,10 @@ public class Rezervace {
 	@Temporal(TemporalType.DATE)
 	private Date datum_do;
 		
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public Rezervace() {
 		
 	}

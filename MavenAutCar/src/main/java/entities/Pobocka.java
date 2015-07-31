@@ -21,6 +21,22 @@ public class Pobocka {
 	@OneToMany(mappedBy="pobocka_do", fetch=FetchType.EAGER)
 	private Set<Rezervace> rezervace_do;
 	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setAuta(Set<Auto> auta) {
+		this.auta = auta;
+	}
+
+	public void setRezervace_z(Set<Rezervace> rezervace_z) {
+		this.rezervace_z = rezervace_z;
+	}
+
+	public void setRezervace_do(Set<Rezervace> rezervace_do) {
+		this.rezervace_do = rezervace_do;
+	}
+
 	public Set<Rezervace> getRezervace_z() {
 		return rezervace_z;
 	}
